@@ -1,26 +1,51 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* === Tailwind 4.1 theme tokens === */
+@theme {
+  --color-lightest: #F1F1F1;
+  --color-alert: #FFC107;
+  --color-accent2: #30D5C8;
+  --color-accent: #FF6F61;
+  --color-darkest: #303036;
+
+  --font-heading: 'Titillium Web', sans-serif;
+  --font-body: 'Montserrat', sans-serif;
+  --font-caption: 'PT Sans Caption', sans-serif;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* === Base styles === */
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  @apply bg-darkest text-lightest font-body antialiased;
+}
+
+h1, h2, h3 {
+  @apply font-heading font-extrabold uppercase tracking-tight;
+}
+
+p {
+  @apply text-lightest/80 leading-relaxed;
+}
+
+a {
+  @apply transition-opacity duration-200 hover:opacity-80;
+}
+
+/* Optional utility helpers */
+.btn {
+  @apply inline-flex items-center justify-center rounded-md px-6 py-3 font-semibold transition-colors;
+}
+.btn-outline-accent2 {
+  @apply border-2 border-accent2 text-lightest hover:bg-accent2/10;
+}
+.btn-outline-alert {
+  @apply border-2 border-alert text-lightest hover:bg-alert/10;
+}
+.btn-solid-alert {
+  @apply bg-alert text-darkest hover:brightness-105;
 }
