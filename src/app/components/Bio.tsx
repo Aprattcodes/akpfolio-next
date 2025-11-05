@@ -32,7 +32,7 @@ export default function Bio() {
           <article className="order-2 md:order-1 space-y-6">
             <h2
               id="bio-heading"
-              className="text-3xl sm:text-4xl lg:text-5xl font-heading font-extrabold uppercase tracking-tight text-lightest"
+              className="text-3xl sm:text-4xl lg:text-5xl font-heading uppercase tracking-tight text-lightest"
             >
               About Me
             </h2>
