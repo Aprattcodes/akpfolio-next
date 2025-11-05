@@ -4,10 +4,10 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 
 export default function Hero() {
-  // scroll to #projects section
-  const handleScroll = (e: React.MouseEvent<HTMLAnchorElement>) => {
+  // scroll to section
+  const handleScroll = (e: React.MouseEvent<HTMLAnchorElement>, targetId: string) => {
     e.preventDefault();
-    const target = document.querySelector("#projects");
+    const target = document.querySelector(targetId);
     target?.scrollIntoView({ behavior: "smooth" });
   };
 
@@ -39,17 +39,18 @@ export default function Hero() {
       >
         <a
           href="#projects"
-          onClick={handleScroll}
+          onClick={(e) => handleScroll(e, "#projects")}
           className="inline-flex items-center rounded-md border-2 border-accent2 px-6 py-3 font-semibold text-lightest hover:bg-accent2/10 cursor-pointer"
         >
           Portfolio
         </a>
-        <Link
-          href="/about"
-          className="inline-flex items-center rounded-md border-2 border-alert px-6 py-3 font-semibold text-lightest hover:bg-alert/10"
+        <a
+          href="#about"
+          onClick={(e) => handleScroll(e, "#about")}
+          className="inline-flex items-center rounded-md border-2 border-alert px-6 py-3 font-semibold text-lightest hover:bg-alert/10 cursor-pointer"
         >
           About
-        </Link>
+        </a>
         <Link
           href="/resume"
           className="inline-flex items-center rounded-md bg-alert px-6 py-3 font-semibold text-darkest hover:brightness-105"
