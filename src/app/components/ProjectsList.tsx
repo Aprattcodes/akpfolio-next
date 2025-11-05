@@ -7,11 +7,12 @@ import { ArrowRight } from "lucide-react";
 
 export default function ProjectsList() {
   return (
-    <section className="container py-24 px-24">
-      {/* Section Title */}
-      <h2 className="text-4xl font-heading mb-8 text-lightest uppercase tracking-tight">
-        Projects
-      </h2>
+    <section id="projects" className="min-h-screen flex items-center justify-center px-6 sm:px-12 lg:px-24">
+      <div className="mx-auto max-w-6xl w-full">
+        {/* Section Title */}
+        <h2 className="text-4xl font-heading mb-8 text-lightest uppercase tracking-tight">
+          Projects
+        </h2>
 
       {/* Project Rows */}
       <div className="divide-y divide-lightest/20">
@@ -37,6 +38,7 @@ export default function ProjectsList() {
             </span>
           </motion.div>
         ))}
+      </div>
       </div>
     </section>
   );

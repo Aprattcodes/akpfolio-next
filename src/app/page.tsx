@@ -8,12 +8,8 @@ export default function Home() {
   return (
     <main className="bg-darkest text-lightest">
       <Hero />
-      <section id="about">
-        <Bio />
-      </section>
-      <section id="projects">
-        <ProjectsList />
-      </section>
+      <Bio />
+      <ProjectsList />
     </main>
   );
 }

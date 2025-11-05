@@ -8,28 +8,28 @@ export type Project = {
 export const projects: Project[] = [
   {
     title: "VAST",
-    role: "Creative direction",
+    role: "Co-Founder / Creative Technologist",
     slug: "vast",
     image: "/images/vast.jpg",
   },
   {
     title: "Public Involvement",
-    role: "UX & web development",
+    role: "UX & Web Development",
     slug: "public-involvement",
   },
   {
     title: "TouchDesigner",
-    role: "Interactive design",
+    role: "Artist / Technologist",
     slug: "touchdesigner",
   },
   {
-    title: "Visual Arts",
-    role: "Digital media",
+    title: "Visual Arts (Earlier Work)",
+    role: "Illutstration & Digital media",
     slug: "visual-arts",
   },
   {
-    title: "Portfolio Website",
-    role: "Web design & development",
+    title: "Portfolio Website (akpfolio.com)",
+    role: "Web design & Development",
     slug: "portfolio",
   },
 ];

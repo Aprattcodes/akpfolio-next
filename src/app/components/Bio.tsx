@@ -5,8 +5,8 @@ import Image from "next/image";
 
 export default function Bio() {
   return (
-    <section className="container py-16 px-6 sm:py-24 sm:px-12 lg:px-24" aria-labelledby="bio-heading">
-      <div className="mx-auto max-w-6xl">
+    <section id="about" className="min-h-screen flex items-center justify-center px-6 sm:px-12 lg:px-24" aria-labelledby="bio-heading">
+      <div className="mx-auto max-w-6xl w-full">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
