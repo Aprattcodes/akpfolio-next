@@ -17,7 +17,7 @@ export default function Home() {
   return (
     <>
       <ScrollButtons />
-      <main className="bg-darkest text-lightest">
+      <main className="text-lightest relative">
       {/* Full-width intro sections */}
       <Hero />
       <Bio />

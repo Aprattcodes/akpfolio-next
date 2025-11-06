@@ -11,7 +11,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
       <body className={`${montserrat.variable} ${titillium.variable} ${ptSansCaption.variable}`}>
-        <header className="sticky top-0 z-40 border-b border-lightest/10 bg-darkest/70 backdrop-blur">
+        <header className="sticky top-0 z-50 backdrop-blur-md bg-darkest/40 border-b border-lightest/10">
           <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4 text-lightest">
             <Link href="/" className="font-heading text-xl">
               AKP
