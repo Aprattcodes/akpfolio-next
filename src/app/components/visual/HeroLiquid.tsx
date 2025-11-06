@@ -92,7 +92,6 @@ function LiquidMaterial({
 }: Props) {
   const { size } = useThree();
   const matRef = useRef<THREE.ShaderMaterial>(null);
-  const [scrollY, setScrollY] = useState(0);
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(() => {
     if (typeof window !== "undefined") {
       return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -118,21 +117,6 @@ function LiquidMaterial({
     return () => mediaQuery.removeEventListener("change", handler);
   }, []);
 
-  // Handle scroll-based fade
-  useEffect(() => {
-    const onScroll = () => setScrollY(window.scrollY || 0);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
-  useEffect(() => {
-    const opacity = prefersReducedMotion ? 0 : 1 - Math.min(scrollY / fadeEndPx, 1);
-    if (matRef.current) {
-      matRef.current.uniforms.u_opacity.value = opacity;
-    }
-  }, [scrollY, fadeEndPx, prefersReducedMotion]);
-
   useEffect(() => {
     if (matRef.current) {
       matRef.current.uniforms.u_res.value.set(size.width, size.height);
@@ -141,7 +125,10 @@ function LiquidMaterial({
 
   useFrame((state) => {
     if (!prefersReducedMotion && matRef.current) {
-      matRef.current.uniforms.u_time.value = state.clock.getElapsedTime();
+      const scrollY = window.scrollY;
+      const fade = 1 - Math.min(scrollY / fadeEndPx, 1);
+      matRef.current.uniforms.u_opacity.value = fade;
+      matRef.current.uniforms.u_time.value = state.clock.getElapsedTime() * 0.8;
     }
   });
 
@@ -177,8 +164,8 @@ function LiquidScene(props: Props) {
 
 export default function HeroLiquid(props: Props) {
   return (
-    <div className="fixed inset-0 -z-10 pointer-events-none">
-      <Canvas gl={{ antialias: false }} dpr={[1, 2]}>
+    <div className="fixed inset-0 -z-10 pointer-events-none will-change-transform">
+      <Canvas gl={{ antialias: false }} dpr={[1, 2]} frameloop="always">
         <LiquidScene {...props} />
       </Canvas>
     </div>
