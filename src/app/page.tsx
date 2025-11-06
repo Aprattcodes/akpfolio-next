@@ -9,6 +9,7 @@ import CreativeTechSection from "@/app/components/CreativeTechSection";
 import PortfolioSection from "@/app/components/PortfolioSection";
 import ContactSection from "@/app/components/ContactSection";
 import ScrollButtons from "@/app/components/ScrollButtons";
+import HeroLiquid from "@/app/components/visual/HeroLiquid";
 import { useActiveSection } from "@/app/hooks/useActiveSection";
 
 export default function Home() {
@@ -16,6 +17,7 @@ export default function Home() {
 
   return (
     <>
+      <HeroLiquid fadeEndPx={900} />
       <ScrollButtons />
       <main className="text-lightest relative">
       {/* Full-width intro sections */}
