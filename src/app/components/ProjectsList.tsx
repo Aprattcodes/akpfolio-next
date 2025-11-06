@@ -64,7 +64,7 @@ export default function ProjectsList({ activeSection }: ProjectsListProps) {
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.4, delay: index * 0.1 }}
-                className={`group py-6 px-4 rounded-lg transition-all duration-300 ${
+                className={`group p-4 rounded-lg transition-all duration-300 ${
                   isActive ? "bg-lightest/10" : "hover:bg-lightest/5"
                 }`}
               >

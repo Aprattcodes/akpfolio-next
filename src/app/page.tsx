@@ -8,19 +8,22 @@ import JLASection from "@/app/components/JLASection";
 import CreativeTechSection from "@/app/components/CreativeTechSection";
 import PortfolioSection from "@/app/components/PortfolioSection";
 import ContactSection from "@/app/components/ContactSection";
+import ScrollButtons from "@/app/components/ScrollButtons";
 import { useActiveSection } from "@/app/hooks/useActiveSection";
 
 export default function Home() {
   const activeSection = useActiveSection(["vast", "public-involvement", "creative-tech", "portfolio-site"]);
 
   return (
-    <main className="bg-darkest text-lightest">
+    <>
+      <ScrollButtons />
+      <main className="bg-darkest text-lightest">
       {/* Full-width intro sections */}
       <Hero />
       <Bio />
 
       {/* Split-screen project showcase */}
-      <div className="flex flex-col md:flex-row">
+      <div id="projects" className="flex flex-col md:flex-row">
         {/* Left: Sticky Project List */}
         <aside className="md:w-1/2 md:sticky md:top-0 md:h-screen md:overflow-hidden">
           <ProjectsList activeSection={activeSection} />
@@ -38,5 +41,6 @@ export default function Home() {
       {/* Full-width outro section */}
       <ContactSection />
     </main>
+    </>
   );
 }
