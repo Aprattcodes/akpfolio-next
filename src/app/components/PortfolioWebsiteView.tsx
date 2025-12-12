@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import { Code2, Palette, Zap } from "lucide-react";
 
-export default function PortfolioSection() {
+export default function PortfolioWebsiteView() {
   return (
     <section
       id="portfolio-site"

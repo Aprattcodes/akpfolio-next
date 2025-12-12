@@ -2,27 +2,25 @@
 
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
+import { projects } from "../data/projects";
 
-interface Project {
-  title: string;
-  role: string;
-  slug: string;
-  sectionId: string;
-}
+// Filter projects that have sectionId (needed for scroll navigation)
+const projectsList = projects.filter(project => project.sectionId);
 
-const projectsList: Project[] = [
-  { title: "VAST", role: "Co-Founder / Creative Technologist", slug: "vast", sectionId: "vast" },
-  { title: "Public Involvement", role: "UX & Web Development", slug: "public-involvement", sectionId: "public-involvement" },
-  { title: "Creative Technology", role: "Artist / Technologist", slug: "touchdesigner", sectionId: "creative-tech" },
-  { title: "Portfolio Website", role: "Web Design & Development", slug: "portfolio", sectionId: "portfolio-site" },
-];
-
-const backgroundColors: Record<string, string> = {
-  "vast": "rgba(48, 213, 200, 0.12)",
-  "public-involvement": "rgba(255, 193, 7, 0.12)",
-  "creative-tech": "rgba(255, 111, 97, 0.12)",
-  "portfolio-site": "rgba(48, 213, 200, 0.12)",
+// Map accent colors to background colors
+const accentToBackground: Record<string, string> = {
+  "accent": "rgba(48, 213, 200, 0.12)",   // Teal
+  "accent2": "rgba(48, 213, 200, 0.12)",  // Teal (accent2)
+  "alert": "rgba(255, 193, 7, 0.12)",     // Yellow/Amber
 };
+
+// Build background colors dynamically from projects data
+const backgroundColors: Record<string, string> = projectsList.reduce((acc, project) => {
+  if (project.sectionId) {
+    acc[project.sectionId] = accentToBackground[project.accentColor || "accent"] || "transparent";
+  }
+  return acc;
+}, {} as Record<string, string>);
 
 interface ProjectsListProps {
   activeSection: string;

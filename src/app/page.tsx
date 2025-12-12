@@ -3,17 +3,20 @@
 import Hero from "@/app/components/Hero";
 import Bio from "@/app/components/Bio";
 import ProjectsList from "@/app/components/ProjectsList";
-import VASTSection from "@/app/components/VASTSection";
-import JLASection from "@/app/components/JLASection";
-import CreativeTechSection from "@/app/components/CreativeTechSection";
-import PortfolioSection from "@/app/components/PortfolioSection";
+import ProjectsRenderer from "@/app/components/ProjectsRenderer";
 import ContactSection from "@/app/components/ContactSection";
 import ScrollButtons from "@/app/components/ScrollButtons";
 import HeroLiquid from "@/app/components/visual/HeroLiquid";
 import { useActiveSection } from "@/app/hooks/useActiveSection";
+import { projects } from "@/app/data/projects";
 
 export default function Home() {
-  const activeSection = useActiveSection(["vast", "public-involvement", "creative-tech", "portfolio-site"]);
+  // Dynamically get section IDs from projects data
+  const sectionIds = projects
+    .filter(project => project.sectionId)
+    .map(project => project.sectionId as string);
+
+  const activeSection = useActiveSection(sectionIds);
 
   return (
     <>
@@ -33,10 +36,7 @@ export default function Home() {
 
         {/* Right: Scrollable Project Sections */}
         <div className="md:w-1/2">
-          <VASTSection />
-          <JLASection />
-          <CreativeTechSection />
-          <PortfolioSection />
+          <ProjectsRenderer />
         </div>
       </div>
 
