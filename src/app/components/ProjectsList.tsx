@@ -68,7 +68,7 @@ export default function ProjectsList({ activeSection }: ProjectsListProps) {
               >
                 <a
                   href={`#${project.sectionId}`}
-                  onClick={(e) => handleScroll(e, project.sectionId)}
+                  onClick={(e) => handleScroll(e, project.sectionId!)}
                   className="flex items-start justify-between gap-4"
                 >
                   <div className="flex items-start gap-3 flex-1">
