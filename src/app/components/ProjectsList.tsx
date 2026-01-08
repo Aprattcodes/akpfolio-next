@@ -8,11 +8,10 @@ import { projects } from "../data/projects";
 const projectsList = projects.filter(project => project.sectionId);
 
 const backgroundColors: Record<string, string> = {
+  "wcag": "rgba(48, 213, 200, 0.12)",
   "soaria": "rgba(255, 111, 97, 0.12)",
-  "vast": "rgba(48, 213, 200, 0.12)",
-  "public-involvement": "rgba(255, 193, 7, 0.12)",
-  "creative-tech": "rgba(255, 111, 97, 0.12)",
-  "portfolio-site": "rgba(48, 213, 200, 0.12)",
+  "creative-tech": "rgba(48, 213, 200, 0.12)",
+  "portfolio-site": "rgba(255, 111, 97, 0.12)",
 };
 
 interface ProjectsListProps {
@@ -42,7 +41,7 @@ export default function ProjectsList({ activeSection }: ProjectsListProps) {
           transition={{ duration: 0.6 }}
           className="text-4xl sm:text-5xl font-heading mb-12 text-lightest uppercase tracking-tight"
         >
-          Selected Work
+          Areas of practice
         </motion.h2>
 
         {/* Project Rows */}

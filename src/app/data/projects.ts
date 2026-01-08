@@ -1,3 +1,12 @@
+export type CaseStudy = {
+  title: string;
+  description: string;
+  image: string;
+  imageAlt: string;
+  slug: string; // For URL: /work/case-studies/{slug}
+  tags?: string[]; // Optional: ["WCAG 2.1", "React", etc.]
+};
+
 export type Project = {
   title: string;
   role: string;
@@ -12,49 +21,65 @@ export type Project = {
   reverseLayout?: boolean; // If true, image on left, text on right
   icon?: string; // lucide-react icon name (for card view)
   isPortfolio?: boolean; // Special flag for portfolio section
+  caseStudies?: CaseStudy[]; // Array of case studies for special case studies view
+  hasCaseStudiesView?: boolean; // Flag to render CaseStudiesView instead of ProjectSection
 };
 
 export const projects: Project[] = [
   {
-    title: "Soaria",
-    role: "Co-Founder / Fullstack Development",
-    slug: "soaria",
-    sectionId: "soaria",
-    description: "Founding engineer and frontend developer for startup company",
+    title: "Accessible Public-Facing Systems",
+    role: "UX Developer, Accessibility, Frontend",
+    slug: "project-list-1",
+    sectionId: "wcag",
+    description: "Civic engagement tools for JLA. Interactive mapping and survey platforms that help communities participate in urban planning and public infrastructure projects. Built with modern web technologies for accessibility and real-time collaboration.",
     image: "/img/VAST/psuedo-plexus-clouds.png",
-    imageAlt: "Soaria",
-    ctaLink: "/work/soaria",
-    ctaText: "View Project",
+    imageAlt: "na",
+    ctaLink: "/work/case-studies",
+    ctaText: "View Case Studies",
     accentColor: "accent",
+    hasCaseStudiesView: true,
+    caseStudies: [
+      {
+        title: "Blue Lake Survey Platform",
+        description: "Accessible survey interface for community feedback on water infrastructure projects. Implemented WCAG 2.1 AA standards with keyboard navigation and screen reader optimization.",
+        image: "/img/JLA/blue-lake-screenshot.png",
+        imageAlt: "Blue Lake survey platform interface showing accessible form controls",
+        slug: "blue-lake-survey",
+        tags: ["WCAG 2.1", "React", "Survey Platform"],
+      },
+      {
+        title: "Interactive Comment Mapping",
+        description: "Real-time mapping tool allowing residents to pin comments and feedback on infrastructure projects. Features accessible map controls and alternative text-based input methods.",
+        image: "/img/JLA/comment-map-2.png",
+        imageAlt: "Interactive map interface with comment pins and accessible controls",
+        slug: "comment-mapping",
+        tags: ["Mapbox", "Accessibility", "Real-time"],
+      },
+      {
+        title: "PBOT Survey Dashboard",
+        description: "Portland Bureau of Transportation survey platform with comprehensive accessibility features including high contrast modes, focus indicators, and semantic HTML structure.",
+        image: "/img/JLA/pbot-survey-screenshot.png",
+        imageAlt: "PBOT survey dashboard showing accessible form elements",
+        slug: "pbot-survey",
+        tags: ["Government", "WCAG 2.1", "User Research"],
+      },
+    ],
   },
   {
-    title: "VAST",
-    role: "Co-Founder / Creative Technologist",
-    slug: "vast",
-    sectionId: "vast",
+    title: "Product & Startup Engineering",
+    role: "Full-Stack, Frontend Architecture",
+    slug: "soaria",
+    sectionId: "soaria",
     description: "Visual Arts & Spacious Technology. A creative collective exploring the intersection of art, technology, and immersive experiences. We create generative visuals, interactive installations, and experimental digital media.",
     image: "/img/VAST/polygonia-v5-L.png",
-    imageAlt: "VAST - Generative visual artwork",
-    ctaLink: "/work/vast",
+    imageAlt: "na",
+    ctaLink: "/work/soaria",
     ctaText: "View Project",
     accentColor: "accent2",
   },
   {
-    title: "Public Involvement",
-    role: "UX & Web Development",
-    slug: "public-involvement",
-    sectionId: "public-involvement",
-    description: "Civic engagement tools for Johnson Lueck & Associates. Interactive mapping and survey platforms that help communities participate in urban planning and public infrastructure projects. Built with modern web technologies for accessibility and real-time collaboration.",
-    image: "/img/JLA/comment-map.png",
-    imageAlt: "JLA Public Involvement - Interactive comment mapping tool",
-    ctaLink: "/work/public-involvement",
-    ctaText: "View Project",
-    accentColor: "alert",
-    reverseLayout: true,
-  },
-  {
-    title: "Creative Technology",
-    role: "Artist / Technologist",
+    title: "Creative Technology & Digital Artist",
+    role: "Interactive, Experimental, Visual Systems, Graphic Design",
     slug: "touchdesigner",
     sectionId: "creative-tech",
     description: "Real-time visual systems built with TouchDesigner. Interactive installations, generative graphics, and live performance visuals. Exploring the creative potential of node-based programming and procedural design.",
@@ -63,11 +88,6 @@ export const projects: Project[] = [
     ctaLink: "/work/touchdesigner",
     ctaText: "View Project",
     accentColor: "accent",
-  },
-  {
-    title: "Visual Arts (Earlier Work)",
-    role: "Illutstration & Digital media",
-    slug: "visual-arts",
   },
   {
     title: "Portfolio Website (akpfolio.com)",
