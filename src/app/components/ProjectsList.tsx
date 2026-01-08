@@ -7,28 +7,22 @@ import { projects } from "../data/projects";
 // Filter projects that have sectionId (needed for scroll navigation)
 const projectsList = projects.filter(project => project.sectionId);
 
-// Map accent colors to background colors
-const accentToBackground: Record<string, string> = {
-  "accent": "rgba(48, 213, 200, 0.12)",   // Teal
-  "accent2": "rgba(48, 213, 200, 0.12)",  // Teal (accent2)
-  "alert": "rgba(255, 193, 7, 0.12)",     // Yellow/Amber
+const backgroundColors: Record<string, string> = {
+  "soaria": "rgba(255, 111, 97, 0.12)",
+  "vast": "rgba(48, 213, 200, 0.12)",
+  "public-involvement": "rgba(255, 193, 7, 0.12)",
+  "creative-tech": "rgba(255, 111, 97, 0.12)",
+  "portfolio-site": "rgba(48, 213, 200, 0.12)",
 };
-
-// Build background colors dynamically from projects data
-const backgroundColors: Record<string, string> = projectsList.reduce((acc, project) => {
-  if (project.sectionId) {
-    acc[project.sectionId] = accentToBackground[project.accentColor || "accent"] || "transparent";
-  }
-  return acc;
-}, {} as Record<string, string>);
 
 interface ProjectsListProps {
   activeSection: string;
 }
 
 export default function ProjectsList({ activeSection }: ProjectsListProps) {
-  const handleScroll = (e: React.MouseEvent<HTMLAnchorElement>, sectionId: string) => {
+  const handleScroll = (e: React.MouseEvent<HTMLAnchorElement>, sectionId?: string) => {
     e.preventDefault();
+    if (!sectionId) return;
     const target = document.getElementById(sectionId);
     target?.scrollIntoView({ behavior: "smooth" });
   };
@@ -68,7 +62,7 @@ export default function ProjectsList({ activeSection }: ProjectsListProps) {
               >
                 <a
                   href={`#${project.sectionId}`}
-                  onClick={(e) => handleScroll(e, project.sectionId!)}
+                  onClick={(e) => handleScroll(e, project.sectionId)}
                   className="flex items-start justify-between gap-4"
                 >
                   <div className="flex items-start gap-3 flex-1">
