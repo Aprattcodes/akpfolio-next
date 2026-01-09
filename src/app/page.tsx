@@ -1,11 +1,11 @@
 "use client";
 
-import Hero from "@/app/components/Hero";
-import Bio from "@/app/components/Bio";
-import ProjectsList from "@/app/components/ProjectsList";
-import ProjectsRenderer from "@/app/components/ProjectsRenderer";
-import ContactSection from "@/app/components/ContactSection";
-import ScrollButtons from "@/app/components/ScrollButtons";
+import Hero from "@/app/components/sections/Hero";
+import Bio from "@/app/components/sections/Bio";
+import ProjectsList from "@/app/components/projects/ProjectsList";
+import ProjectsRenderer from "@/app/components/projects/ProjectsRenderer";
+import ContactSection from "@/app/components/sections/ContactSection";
+import ScrollButtons from "@/app/components/ui/ScrollButtons";
 import HeroLiquid from "@/app/components/visual/HeroLiquid";
 import { useActiveSection } from "@/app/hooks/useActiveSection";
 import { projects } from "@/app/data/projects";

@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
-import { projects } from "../data/projects";
+import { projects } from "../../data/projects";
 
 // Filter projects that have sectionId (needed for scroll navigation)
 const projectsList = projects.filter(project => project.sectionId);

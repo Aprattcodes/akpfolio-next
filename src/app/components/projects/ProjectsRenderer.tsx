@@ -1,6 +1,6 @@
 "use client";
 
-import { projects } from "../data/projects";
+import { projects } from "../../data/projects";
 import ProjectSection from "./ProjectSection";
 import PortfolioWebsiteView from "./PortfolioWebsiteView";
 import CaseStudiesView from "./CaseStudiesView";
