@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { projects } from "@/app/data/projects";
+import { getCaseStudyBySlug, getAllCaseStudySlugs } from "@/app/data/projects";
+import { Metadata } from "next";
 
 type PageProps = {
   params: {
@@ -10,23 +11,14 @@ type PageProps = {
 
 // Generate static paths for all case studies
 export function generateStaticParams() {
-  const wcagProject = projects.find((p) => p.sectionId === "wcag");
-
-  if (!wcagProject?.caseStudies) {
-    return [];
-  }
-
-  return wcagProject.caseStudies.map((study) => ({
-    slug: study.slug,
-  }));
+  const slugs = getAllCaseStudySlugs();
+  return slugs.map((slug) => ({ slug }));
 }
 
 // Generate metadata
-export async function generateMetadata({ params }: PageProps) {
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug } = await params;
-
-  const wcagProject = projects.find((p) => p.sectionId === "wcag");
-  const caseStudy = wcagProject?.caseStudies?.find((s) => s.slug === slug);
+  const caseStudy = getCaseStudyBySlug(slug);
 
   return {
     title: caseStudy?.title || "Case Study",
@@ -36,9 +28,7 @@ export async function generateMetadata({ params }: PageProps) {
 
 export default async function CaseStudyPage({ params }: PageProps) {
   const { slug } = await params;
-
-  const wcagProject = projects.find((p) => p.sectionId === "wcag");
-  const caseStudy = wcagProject?.caseStudies?.find((s) => s.slug === slug);
+  const caseStudy = getCaseStudyBySlug(slug);
 
   if (!caseStudy) {
     notFound();
@@ -117,6 +107,54 @@ export default async function CaseStudyPage({ params }: PageProps) {
 
       <div className="h-14 md:h-20" />
 
+      {/* Two-Column Section */}
+      <section className="px-5 md:px-8">
+        <div className="mx-auto w-full max-w-6xl">
+          <div className="grid gap-10 md:grid-cols-12 md:gap-12">
+            <div className="md:col-span-4">
+              <h2 className="text-[clamp(1.5rem,2.5vw,2.25rem)] font-semibold leading-tight">
+                Section Heading
+              </h2>
+              <div className="h-3" />
+              <p className="text-sm uppercase tracking-widest opacity-70 font-caption">Subtitle text here</p>
+            </div>
+
+            <div className="md:col-span-8">
+              <p className="text-base md:text-lg leading-relaxed opacity-90">
+                This is the paragraph text that compliments the titles on the left. You can add multiple paragraphs
+                or additional content here to provide context and details about this section of the case study.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div className="h-14 md:h-20" />
+
+      {/* Second Image */}
+      <section className="px-5 md:px-8">
+        <div className="mx-auto w-full max-w-6xl">
+          <div className="relative overflow-hidden rounded-2xl border border-lightest/10 bg-lightest/5">
+            <div className="aspect-video w-full flex items-center justify-center text-lightest/40">
+              <p className="text-sm">Second Image Placeholder</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div className="h-14 md:h-20" />
+
+      {/* Large Callout Text */}
+      <section className="px-5 md:px-8">
+        <div className="mx-auto w-full max-w-6xl">
+          <p className="text-[clamp(2rem,4vw,3.5rem)] font-semibold leading-tight" style={{ color: 'var(--color-accent)' }}>
+            This is large callout text that draws attention and emphasizes a key point or insight from the case study.
+          </p>
+        </div>
+      </section>
+
+      <div className="h-14 md:h-20" />
+
       {/* Content Placeholder */}
       <section className="px-5 md:px-8">
         <div className="mx-auto w-full max-w-4xl">
@@ -125,7 +163,8 @@ export default async function CaseStudyPage({ params }: PageProps) {
               This is a placeholder page for <strong>{caseStudy.title}</strong>.
             </p>
             <p className="text-base leading-relaxed opacity-80 mb-8">
-              Add your detailed case study content here using your CaseStudiesPage.tsx as a template.
+              Add your detailed case study content by populating the optional fields in projects.ts
+              (meta, sections, highlights, stats, etc.) and rendering them here.
             </p>
           </div>
         </div>

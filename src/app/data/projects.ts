@@ -1,10 +1,42 @@
 export type CaseStudy = {
+  // Preview data (for grids/cards)
   title: string;
   description: string;
   image: string;
   imageAlt: string;
   slug: string; // For URL: /work/case-studies/{slug}
   tags?: string[]; // Optional: ["WCAG 2.1", "React", etc.]
+
+  // Full page content
+  meta?: {
+    client?: string;
+    role?: string;
+    timeline?: string;
+    platform?: string;
+    focus?: string;
+  };
+  hero?: {
+    image: string;
+    imageAlt: string;
+  };
+  summary?: string;
+  calloutText?: string; // Large accent-colored callout text
+  sections?: {
+    id: string;
+    kicker?: string; // Small label above heading
+    heading: string;
+    body: string[];
+  }[];
+  highlights?: string[]; // Implementation highlights list
+  stats?: {
+    label: string;
+    value: string;
+  }[];
+  images?: {
+    src: string;
+    alt: string;
+    caption?: string;
+  }[];
 };
 
 export type Project = {
@@ -97,3 +129,22 @@ export const projects: Project[] = [
     isPortfolio: true,
   },
 ];
+
+// Helper functions for case studies
+export const getCaseStudyBySlug = (slug: string): CaseStudy | null => {
+  for (const project of projects) {
+    const study = project.caseStudies?.find((s) => s.slug === slug);
+    if (study) return study;
+  }
+  return null;
+};
+
+export const getAllCaseStudySlugs = (): string[] => {
+  const slugs: string[] = [];
+  for (const project of projects) {
+    if (project.caseStudies) {
+      slugs.push(...project.caseStudies.map((s) => s.slug));
+    }
+  }
+  return slugs;
+};
