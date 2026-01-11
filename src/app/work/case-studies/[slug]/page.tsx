@@ -65,112 +65,204 @@ export default async function CaseStudyPage({ params }: PageProps) {
 
           <div className="h-6 md:h-8" />
 
-          <div className="grid gap-6 md:grid-cols-2">
-            <div>
-              <p className="text-xs uppercase tracking-widest opacity-70 font-caption">Description</p>
-              <div className="h-3" />
-              <p className="text-lg leading-relaxed">{caseStudy.description}</p>
-            </div>
-
-            {caseStudy.tags && caseStudy.tags.length > 0 && (
-              <div>
-                <p className="text-xs uppercase tracking-widest opacity-70 font-caption">Technologies</p>
-                <div className="h-3" />
-                <div className="flex flex-wrap gap-2">
-                  {caseStudy.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="text-sm px-3 py-1 rounded-full bg-accent2/10 text-accent2 border border-accent2/20"
-                    >
-                      {tag}
-                    </span>
-                  ))}
+          {/* Meta Information */}
+          {caseStudy.meta && (
+            <div className="grid gap-6 md:grid-cols-12 md:gap-8">
+              {caseStudy.meta.client && (
+                <div className="md:col-span-4">
+                  <p className="text-xs uppercase tracking-widest opacity-70 font-caption">Client / Partners</p>
+                  <div className="h-3" />
+                  <p className="text-base md:text-lg leading-relaxed">{caseStudy.meta.client}</p>
                 </div>
+              )}
+
+              <div className="md:col-span-4">
+                <p className="text-xs uppercase tracking-widest opacity-70 font-caption">What I did</p>
+                <div className="h-3" />
+                <ul className="space-y-2 text-base md:text-lg">
+                  {caseStudy.meta.role && (
+                    <li className="leading-relaxed">
+                      <span className="opacity-70">Role:</span> {caseStudy.meta.role}
+                    </li>
+                  )}
+                  {caseStudy.meta.timeline && (
+                    <li className="leading-relaxed">
+                      <span className="opacity-70">Timeline:</span> {caseStudy.meta.timeline}
+                    </li>
+                  )}
+                </ul>
               </div>
-            )}
-          </div>
+
+              <div className="md:col-span-4">
+                <p className="text-xs uppercase tracking-widest opacity-70 font-caption">Tools / Platform</p>
+                <div className="h-3" />
+                <ul className="space-y-2 text-base md:text-lg">
+                  {caseStudy.meta.platform && (
+                    <li className="leading-relaxed">
+                      <span className="opacity-70">Platform:</span> {caseStudy.meta.platform}
+                    </li>
+                  )}
+                  {caseStudy.meta.focus && (
+                    <li className="leading-relaxed">
+                      <span className="opacity-70">Focus:</span> {caseStudy.meta.focus}
+                    </li>
+                  )}
+                </ul>
+              </div>
+            </div>
+          )}
         </div>
       </header>
 
       <div className="h-10 md:h-14" />
 
-      {/* Featured Image Placeholder */}
+      {/* Hero Image */}
       <section className="px-5 md:px-8">
         <div className="mx-auto w-full max-w-6xl">
           <div className="relative overflow-hidden rounded-2xl border border-lightest/10 bg-lightest/5">
             <div className="aspect-video w-full flex items-center justify-center text-lightest/40">
-              <p className="text-sm">Image: {caseStudy.imageAlt}</p>
+              <p className="text-sm">Image: {caseStudy.hero?.imageAlt || caseStudy.imageAlt}</p>
             </div>
           </div>
+
+          {/* Summary and Stats */}
+          {(caseStudy.summary || caseStudy.stats) && (
+            <>
+              <div className="h-4" />
+              <div className="grid gap-6 md:grid-cols-12 md:gap-10">
+                {caseStudy.summary && (
+                  <div className="md:col-span-7">
+                    <p className="text-lg md:text-xl leading-relaxed opacity-90">
+                      {caseStudy.summary}
+                    </p>
+                  </div>
+                )}
+
+                {caseStudy.stats && caseStudy.stats.length > 0 && (
+                  <div className="md:col-span-5">
+                    <div className="grid grid-cols-1 gap-4 rounded-2xl border border-lightest/10 p-5 md:p-6">
+                      {caseStudy.stats.map((stat) => (
+                        <div key={stat.label}>
+                          <p className="text-xs uppercase tracking-widest opacity-70 font-caption">{stat.label}</p>
+                          <div className="h-2" />
+                          <p className="text-xl md:text-2xl font-semibold">{stat.value}</p>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </div>
+            </>
+          )}
         </div>
       </section>
 
       <div className="h-14 md:h-20" />
 
-      {/* Two-Column Section */}
-      <section className="px-5 md:px-8">
-        <div className="mx-auto w-full max-w-6xl">
-          <div className="grid gap-10 md:grid-cols-12 md:gap-12">
-            <div className="md:col-span-4">
-              <h2 className="text-[clamp(1.5rem,2.5vw,2.25rem)] font-semibold leading-tight">
-                Section Heading
-              </h2>
-              <div className="h-3" />
-              <p className="text-sm uppercase tracking-widest opacity-70 font-caption">Subtitle text here</p>
-            </div>
+      {/* Sections */}
+      {caseStudy.sections && caseStudy.sections.map((section, index) => (
+        <div key={section.id}>
+          <section className="px-5 md:px-8">
+            <div className="mx-auto w-full max-w-6xl">
+              <div className="grid gap-10 md:grid-cols-12 md:gap-12">
+                <div className="md:col-span-4">
+                  <h2 className="text-[clamp(1.5rem,2.5vw,2.25rem)] font-semibold leading-tight">
+                    {section.heading}
+                  </h2>
+                  {section.kicker && (
+                    <>
+                      <div className="h-3" />
+                      <p className="text-sm uppercase tracking-widest opacity-70 font-caption">{section.kicker}</p>
+                    </>
+                  )}
+                </div>
 
-            <div className="md:col-span-8">
-              <p className="text-base md:text-lg leading-relaxed opacity-90">
-                This is the paragraph text that compliments the titles on the left. You can add multiple paragraphs
-                or additional content here to provide context and details about this section of the case study.
-              </p>
+                <div className="md:col-span-8">
+                  <div className="space-y-4">
+                    {section.body.map((paragraph, pIndex) => (
+                      <p key={pIndex} className="text-base md:text-lg leading-relaxed opacity-90">
+                        {paragraph}
+                      </p>
+                    ))}
+                  </div>
+                </div>
+              </div>
             </div>
-          </div>
+          </section>
+          <div className="h-14 md:h-20" />
         </div>
-      </section>
+      ))}
 
-      <div className="h-14 md:h-20" />
-
-      {/* Second Image */}
-      <section className="px-5 md:px-8">
-        <div className="mx-auto w-full max-w-6xl">
-          <div className="relative overflow-hidden rounded-2xl border border-lightest/10 bg-lightest/5">
-            <div className="aspect-video w-full flex items-center justify-center text-lightest/40">
-              <p className="text-sm">Second Image Placeholder</p>
+      {/* Images
+      {caseStudy.images && caseStudy.images.length > 0 && caseStudy.images.map((img, index) => (
+        <div key={index}>
+          <section className="px-5 md:px-8">
+            <div className="mx-auto w-full max-w-6xl">
+              <div className="relative overflow-hidden rounded-2xl border border-lightest/10 bg-lightest/5">
+                <div className="aspect-video w-full flex items-center justify-center text-lightest/40">
+                  <p className="text-sm">Image: {img.alt}</p>
+                </div>
+              </div>
+              {img.caption && (
+                <>
+                  <div className="h-3" />
+                  <p className="text-sm opacity-70">{img.caption}</p>
+                </>
+              )}
             </div>
-          </div>
+          </section>
+          <div className="h-14 md:h-20" />
         </div>
-      </section>
-
-      <div className="h-14 md:h-20" />
+      ))} */}
 
       {/* Large Callout Text */}
-      <section className="px-5 md:px-8">
-        <div className="mx-auto w-full max-w-6xl">
-          <p className="text-[clamp(2rem,4vw,3.5rem)] font-semibold leading-tight" style={{ color: 'var(--color-accent)' }}>
-            This is large callout text that draws attention and emphasizes a key point or insight from the case study.
-          </p>
-        </div>
-      </section>
+      {caseStudy.calloutText && (
+        <>
+          <section className="px-5 md:px-8">
+            <div className="mx-auto w-full max-w-6xl">
+              <p className="text-[clamp(2rem,4vw,3.5rem)] font-semibold leading-tight" style={{ color: 'var(--color-accent)' }}>
+                {caseStudy.calloutText}
+              </p>
+            </div>
+          </section>
+          <div className="h-14 md:h-20" />
+        </>
+      )}
 
-      <div className="h-14 md:h-20" />
+      {/* Implementation Highlights */}
+      {caseStudy.highlights && caseStudy.highlights.length > 0 && (
+        <>
+          <section className="bg-darkest py-16 md:py-24">
+            <div className="px-5 md:px-8">
+              <div className="mx-auto w-full max-w-6xl">
+                <div className="grid gap-10 md:grid-cols-2 md:gap-12">
+                  {/* Left Column - Sticky */}
+                  <div className="md:sticky md:top-20 md:self-start">
+                    <p className="text-[clamp(1.75rem,3vw,2.5rem)] font-medium leading-tight text-lightest">
+                      Implementation Highlights
+                    </p>
+                  </div>
 
-      {/* Content Placeholder */}
-      <section className="px-5 md:px-8">
-        <div className="mx-auto w-full max-w-4xl">
-          <div className="rounded-2xl border border-lightest/10 bg-lightest/5 p-8 md:p-12">
-            <p className="text-lg leading-relaxed opacity-90 mb-6">
-              This is a placeholder page for <strong>{caseStudy.title}</strong>.
-            </p>
-            <p className="text-base leading-relaxed opacity-80 mb-8">
-              Add your detailed case study content by populating the optional fields in projects.ts
-              (meta, sections, highlights, stats, etc.) and rendering them here.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <div className="h-14 md:h-20" />
+                  {/* Right Column - Scrollable Content */}
+                  <div className="space-y-8">
+                    <div className="rounded-2xl border border-lightest/10 p-5 md:p-6">
+                      <ul className="space-y-3 text-base md:text-lg leading-relaxed">
+                        {caseStudy.highlights.map((highlight, index) => (
+                          <li key={index} className="flex gap-3 text-lightest">
+                            <span className="mt-[0.35rem] inline-block h-2 w-2 shrink-0 rounded-full border border-lightest" />
+                            <span>{highlight}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+          <div className="h-14 md:h-20" />
+        </>
+      )}
 
       {/* Back Link */}
       <section className="px-5 md:px-8 pb-16 md:pb-24">
