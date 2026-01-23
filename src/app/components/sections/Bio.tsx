@@ -34,28 +34,27 @@ export default function Bio() {
               id="bio-heading"
               className="text-3xl sm:text-4xl lg:text-5xl font-heading uppercase tracking-tight text-lightest"
             >
-              About Me
+              About Me (Alyssa Pratt)
             </h2>
 
             <div className="space-y-4">
               <p className="text-base sm:text-lg text-lightest/90 leading-relaxed">
-                I&apos;m a creative technologist with a passion for building interactive,
-                user-centered web experiences. With expertise in modern frontend frameworks
-                and a keen eye for design, I transform complex ideas into elegant,
-                performant applications.
+                I&apos;m a frontend engineer with a UX-focused approach, building accessible, interactive experiences that balance visual impact with real-world constraints. 
+                I often work on cross-functional teams where clarity, usability, and adaptability matter, and I&apos;m frequently pulled in to solve complex or undefined problems that sit between design and engineering.
               </p>
 
               <p className="text-base sm:text-lg text-lightest/90 leading-relaxed">
-                My journey in web development has been driven by curiosity and a love
-                for problem-solving. I specialize in React, Next.js, and cutting-edge
-                web technologies, always seeking to push the boundaries of what&apos;s possible
-                in the browser.
+                I&apos;m trusted to take on unfamiliar tools, 
+                evolving requirements, and legacy systems, and to turn them into stable, maintainable solutions. Whether a project starts messy, under-documented, or constrained by policy, my role is to bring structure, reliability, and forward momentum.
               </p>
 
               <p className="text-base sm:text-lg text-lightest/90 leading-relaxed">
-                When I&apos;m not coding, you&apos;ll find me exploring new design patterns,
-                contributing to open-source projects, or experimenting with creative coding
-                and generative art.
+                Accessibility is a core part of my decision-making, not an afterthought. I advocate for inclusive interfaces that are clear, engaging, and compliant, even when that means pushing back on trends that sacrifice usability.
+              </p>
+
+               <p className="text-base sm:text-lg text-lightest/90 leading-relaxed">
+                My background spans a wide range of public-sector projects with strict requirements 
+                and long lifecycles, including maintaining and evolving legacy systems while planning for their future. I&apos;m focused on roles where I can build thoughtful frontend systems that serve real users at scale.
               </p>
             </div>
 

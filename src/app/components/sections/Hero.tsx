@@ -25,7 +25,7 @@ export default function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            Creative Technologist & Developer
+            Frontend Engineer &<br/> Creative Technologist
           </motion.h1>
 
           <motion.p
@@ -34,7 +34,7 @@ export default function Hero() {
             animate={{ opacity: 1 }}
             transition={{ delay: 0.2, duration: 0.6 }}
           >
-            I build interactive, performant web experiences. Focused on React, Next.js, and real-time visuals.
+            UX Focused | Accessibility Advocate | Systems-Driven Development
           </motion.p>
 
           <motion.div
@@ -48,7 +48,7 @@ export default function Hero() {
               onClick={(e) => handleScroll(e, "#projects")}
               className="inline-flex items-center rounded-md border-2 border-accent2 px-6 py-3 font-semibold text-lightest hover:bg-accent2/10 cursor-pointer"
             >
-              Portfolio
+              Work
             </a>
             <a
               href="#about"
