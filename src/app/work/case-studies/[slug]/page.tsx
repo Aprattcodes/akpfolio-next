@@ -160,7 +160,7 @@ export default async function CaseStudyPage({ params }: PageProps) {
       <div className="h-14 md:h-20" />
 
       {/* Sections */}
-      {caseStudy.sections && caseStudy.sections.map((section, index) => (
+      {caseStudy.sections && caseStudy.sections.map((section) => (
         <div key={section.id}>
           <section className="px-5 md:px-8">
             <div className="mx-auto w-full max-w-6xl">
