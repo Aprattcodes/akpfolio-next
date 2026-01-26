@@ -5,7 +5,7 @@ import Image from "next/image";
 
 export default function Bio() {
   return (
-    <section id="about" className="min-h-screen flex items-center justify-center px-6 sm:px-12 lg:px-24" aria-labelledby="bio-heading">
+    <section id="about" className="min-h-screen flex items-center justify-center px-6 sm:px-12 lg:px-24 py-12 sm:py-16" aria-labelledby="bio-heading">
       <div className="mx-auto max-w-6xl w-full">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -16,7 +16,7 @@ export default function Bio() {
         >
           {/* Image Column */}
           <div className="order-1 md:order-2 flex justify-center">
-            <div className="relative w-64 h-64 sm:w-80 sm:h-80 lg:w-96 lg:h-120">
+            <div className="relative w-64 aspect-[3/4] sm:w-80 lg:w-96">
               <Image
                 src="/img/Alyssa-2024-Headshot-full.jpg"
                 alt="Professional headshot of Alyssa, a creative technologist and developer"
