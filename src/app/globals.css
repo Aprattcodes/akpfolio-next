@@ -58,3 +58,12 @@ a {
 .btn-solid-alert {
   @apply bg-alert text-darkest hover:brightness-105;
 }
+
+/* Hide scrollbar utility */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
