@@ -63,7 +63,7 @@ export const projects: Project[] = [
     role: "UX Developer, Accessibility, Frontend",
     slug: "project-list-1",
     sectionId: "wcag",
-    description: "Civic engagement tools for JLA. Interactive mapping and survey platforms that help communities participate in urban planning and public infrastructure projects. Built with modern web technologies for accessibility and real-time collaboration.",
+    description: "WCAG-compliant public engagement systems for infrastructure projects—bilingual mapping, surveys, and microsites serving 2,000+ stakeholders.",
     image: "/img/VAST/psuedo-plexus-clouds.png",
     imageAlt: "na",
     ctaLink: "/work/case-studies",
@@ -74,7 +74,7 @@ export const projects: Project[] = [
       {
         title: "Warm Springs Power Pathway Website",
         description:
-          "A bilingual, WCAG-compliant microsite supporting transparent public and stakeholder engagement for a long-term transmission line project across private and tribal lands.",
+          "Squarespace microsite with ArcGIS mapping and bilingual Jotform integration for public engagement.",
         image: "/img/case-studies/warm-springs/hero.png",
         imageAlt:
           "Warm Springs Power Pathway website homepage showing bilingual navigation and project overview",
@@ -185,7 +185,7 @@ export const projects: Project[] = [
       {
             title: "PGE Milliken Transmission Line Rebuild",
             description:
-              "A public-facing, WCAG-compliant microsite with a data-driven interactive map to help communities understand where construction occurs, what to expect, and when impacts will happen.",
+              "WCAG-compliant construction awareness site with ArcGIS Experience Builder interactive mapping.",
             image: "/img/case-studies/milliken/hero.png",
             imageAlt:
               "Milliken Transmission Line Rebuild website hero showing project overview and navigation",
@@ -334,191 +334,191 @@ export const projects: Project[] = [
             ],
           },
      {
-  title: "Legacy Interactive Comment Map System",
-  description:
-    "Stabilization and maintenance of a production, public-facing mapping system used by government agencies to collect location-based public feedback at scale.",
-  image: "/img/JLA/comment-map.png",
-  imageAlt:
-    "Public-facing interactive map interface with location-based comment markers",
-  slug: "legacy-interactive-comment-map",
-  tags: [
-    "Legacy Systems",
-    "Production Debugging",
-    "Google Maps API",
-    "Public Sector",
-    "Risk-Aware Engineering",
-    "Frontend Maintenance",
-  ],
+                title: "Legacy Interactive Comment Map System",
+                description:
+                  "Production debugging and stabilization of legacy Google Maps comment system.",
+                image: "/img/JLA/comment-map.png",
+                imageAlt:
+                  "Public-facing interactive map interface with location-based comment markers",
+                slug: "legacy-interactive-comment-map",
+                tags: [
+                  "Legacy Systems",
+                  "Production Debugging",
+                  "Google Maps API",
+                  "Public Sector",
+                  "Risk-Aware Engineering",
+                  "Frontend Maintenance",
+                ],
 
-  meta: {
-    client: "Multiple public-sector agencies",
-    role: "Frontend Engineer, System Maintenance Owner",
-    timeline: "Ongoing maintenance across multiple deployments",
-    platform: "Bolt CMS, PHP, Google Maps API, JavaScript",
-    focus: "System stability, debugging, risk mitigation",
-  },
+                meta: {
+                  client: "Multiple public-sector agencies",
+                  role: "Frontend Engineer, System Maintenance Owner",
+                  timeline: "Ongoing maintenance across multiple deployments",
+                  platform: "Bolt CMS, PHP, Google Maps API, JavaScript",
+                  focus: "System stability, debugging, risk mitigation",
+                },
 
-  hero: {
-    image: "/img/JLA/comment-map.png",
-    imageAlt:
-      "Interactive public comment map showing multiple user-submitted markers",
-  },
+                hero: {
+                  image: "/img/JLA/comment-map.png",
+                  imageAlt:
+                    "Interactive public comment map showing multiple user-submitted markers",
+                },
 
-  summary:
-    "The Legacy Interactive Comment Map System is a production tool used by government agencies to collect geographically specific public feedback for infrastructure and planning projects. I inherited responsibility for its stability and ongoing maintenance, ensuring reliability under legacy constraints while avoiding regressions in active public deployments.",
+                summary:
+                  "The Legacy Interactive Comment Map System is a production tool used by government agencies to collect geographically specific public feedback for infrastructure and planning projects. I inherited responsibility for its stability and ongoing maintenance, ensuring reliability under legacy constraints while avoiding regressions in active public deployments.",
 
-  calloutText:
-    "This project required engineering judgment and restraint more than new feature development.",
+                calloutText:
+                  "This project required engineering judgment and restraint more than new feature development.",
 
-  sections: [
-    {
-      id: "challenge",
-      kicker: "The Challenge",
-      heading: "Stabilizing a Business-Critical Legacy System",
-      body: [
-        "The system was already deployed across multiple public engagement projects and actively collecting live public input.",
-        "It relied on outdated software, undocumented architecture, and legacy dependencies, increasing the risk of failures over time.",
-        "A full rebuild was not feasible due to budget, staffing, and scope constraints, requiring careful maintenance rather than redesign.",
-      ],
-    },
-    {
-      id: "constraints",
-      kicker: "Context & Constraints",
-      heading: "Operating Under Real-World Limitations",
-      body: [
-        "The application ran on an older CMS with legacy PHP versions and no formal version control.",
-        "Dependencies and architectural decisions were undocumented, requiring reverse engineering.",
-        "The system was used in live public engagement efforts, limiting tolerance for breaking changes.",
-        "Any changes needed to be low-risk, reversible, and compatible with existing deployments.",
-      ],
-    },
-    {
-      id: "role",
-      kicker: "Role & Ownership",
-      heading: "Taking Responsibility for an Inherited System",
-      body: [
-        "Although I did not originally build the system, I assumed full ownership of its ongoing stability and maintenance.",
-        "My responsibilities included auditing inherited code, diagnosing production issues, and implementing fixes without introducing regressions.",
-        "I was responsible for deciding when changes were appropriate—and when restraint was the safer engineering choice.",
-      ],
-    },
-    {
-      id: "approach",
-      kicker: "Approach",
-      heading: "Risk-Aware Debugging in Production",
-      body: [
-        "Given the lack of documentation and version control, I prioritized incremental, testable changes over refactoring.",
-        "I mapped data flow from form submission to map rendering and isolated dependencies affecting frontend behavior.",
-        "Changes were made one at a time, with isolated backups and immediate validation to preserve system integrity.",
-      ],
-    },
-    {
-      id: "intervention",
-      kicker: "Key Intervention",
-      heading: "Diagnosing a Map Rendering Failure",
-      body: [
-        "A production issue caused only the first map marker to render correctly, while subsequent markers failed or collapsed into default behavior.",
-        "Data integrity and looping logic were confirmed, indicating the issue was isolated to the marker rendering layer.",
-        "I temporarily replaced the custom marker and label implementation with a baseline Google Maps marker to reduce variables.",
-        "All markers rendered correctly, confirming the failure point and allowing safe remediation without destabilizing the system.",
-      ],
-    },
-    {
-      id: "accessibility",
-      kicker: "Accessibility & UX",
-      heading: "Preserving Usability Under Constraints",
-      body: [
-        "While large-scale UX changes were not feasible, care was taken to avoid introducing accessibility regressions.",
-        "Existing Bootstrap-based patterns were preserved, and changes were tested for keyboard interaction and clarity.",
-        "Where improvements could not be safely implemented, limitations were documented rather than forced.",
-      ],
-    },
-    {
-      id: "outcome",
-      kicker: "Outcome",
-      heading: "Restored Reliability Without Regression",
-      body: [
-        "Marker rendering was stabilized across deployments without breaking existing behavior.",
-        "The system became more predictable and easier to reason about, reducing the risk of future failures.",
-        "The tool remained operational for public-facing engagement while longer-term modernization options were evaluated separately.",
-      ],
-    },
-    {
-      id: "impact",
-      kicker: "Why It Matters",
-      heading: "Engineering Judgment in Production Environments",
-      body: [
-        "This project demonstrates the ability to take ownership of undocumented legacy systems and stabilize them safely.",
-        "It highlights risk-aware debugging, production responsibility, and the discipline to balance improvement with operational trust.",
-      ],
-    },
-  ],
+                sections: [
+                  {
+                    id: "challenge",
+                    kicker: "The Challenge",
+                    heading: "Stabilizing a Business-Critical Legacy System",
+                    body: [
+                      "The system was already deployed across multiple public engagement projects and actively collecting live public input.",
+                      "It relied on outdated software, undocumented architecture, and legacy dependencies, increasing the risk of failures over time.",
+                      "A full rebuild was not feasible due to budget, staffing, and scope constraints, requiring careful maintenance rather than redesign.",
+                    ],
+                  },
+                  {
+                    id: "constraints",
+                    kicker: "Context & Constraints",
+                    heading: "Operating Under Real-World Limitations",
+                    body: [
+                      "The application ran on an older CMS with legacy PHP versions and no formal version control.",
+                      "Dependencies and architectural decisions were undocumented, requiring reverse engineering.",
+                      "The system was used in live public engagement efforts, limiting tolerance for breaking changes.",
+                      "Any changes needed to be low-risk, reversible, and compatible with existing deployments.",
+                    ],
+                  },
+                  {
+                    id: "role",
+                    kicker: "Role & Ownership",
+                    heading: "Taking Responsibility for an Inherited System",
+                    body: [
+                      "Although I did not originally build the system, I assumed full ownership of its ongoing stability and maintenance.",
+                      "My responsibilities included auditing inherited code, diagnosing production issues, and implementing fixes without introducing regressions.",
+                      "I was responsible for deciding when changes were appropriate—and when restraint was the safer engineering choice.",
+                    ],
+                  },
+                  {
+                    id: "approach",
+                    kicker: "Approach",
+                    heading: "Risk-Aware Debugging in Production",
+                    body: [
+                      "Given the lack of documentation and version control, I prioritized incremental, testable changes over refactoring.",
+                      "I mapped data flow from form submission to map rendering and isolated dependencies affecting frontend behavior.",
+                      "Changes were made one at a time, with isolated backups and immediate validation to preserve system integrity.",
+                    ],
+                  },
+                  {
+                    id: "intervention",
+                    kicker: "Key Intervention",
+                    heading: "Diagnosing a Map Rendering Failure",
+                    body: [
+                      "A production issue caused only the first map marker to render correctly, while subsequent markers failed or collapsed into default behavior.",
+                      "Data integrity and looping logic were confirmed, indicating the issue was isolated to the marker rendering layer.",
+                      "I temporarily replaced the custom marker and label implementation with a baseline Google Maps marker to reduce variables.",
+                      "All markers rendered correctly, confirming the failure point and allowing safe remediation without destabilizing the system.",
+                    ],
+                  },
+                  {
+                    id: "accessibility",
+                    kicker: "Accessibility & UX",
+                    heading: "Preserving Usability Under Constraints",
+                    body: [
+                      "While large-scale UX changes were not feasible, care was taken to avoid introducing accessibility regressions.",
+                      "Existing Bootstrap-based patterns were preserved, and changes were tested for keyboard interaction and clarity.",
+                      "Where improvements could not be safely implemented, limitations were documented rather than forced.",
+                    ],
+                  },
+                  {
+                    id: "outcome",
+                    kicker: "Outcome",
+                    heading: "Restored Reliability Without Regression",
+                    body: [
+                      "Marker rendering was stabilized across deployments without breaking existing behavior.",
+                      "The system became more predictable and easier to reason about, reducing the risk of future failures.",
+                      "The tool remained operational for public-facing engagement while longer-term modernization options were evaluated separately.",
+                    ],
+                  },
+                  {
+                    id: "impact",
+                    kicker: "Why It Matters",
+                    heading: "Engineering Judgment in Production Environments",
+                    body: [
+                      "This project demonstrates the ability to take ownership of undocumented legacy systems and stabilize them safely.",
+                      "It highlights risk-aware debugging, production responsibility, and the discipline to balance improvement with operational trust.",
+                    ],
+                  },
+                ],
 
-  highlights: [
-    "Stabilized a production system used in live public engagement",
-    "Diagnosed complex rendering issues in undocumented legacy code",
-    "Applied risk-aware debugging strategies to avoid regressions",
-    "Maintained system reliability without full refactor or rebuild",
-    "Balanced technical improvement with operational responsibility",
-  ],
+                highlights: [
+                  "Stabilized a production system used in live public engagement",
+                  "Diagnosed complex rendering issues in undocumented legacy code",
+                  "Applied risk-aware debugging strategies to avoid regressions",
+                  "Maintained system reliability without full refactor or rebuild",
+                  "Balanced technical improvement with operational responsibility",
+                ],
 
-  stats: [
-    {
-      label: "Public responses per deployment",
-      value: "2,000+",
-    },
-    {
-      label: "System status",
-      value: "Production, multi-project use",
-    },
-    {
-      label: "Primary risk",
-      value: "Legacy dependencies & undocumented architecture",
-    },
-  ],
+                stats: [
+                  {
+                    label: "Public responses per deployment",
+                    value: "2,000+",
+                  },
+                  {
+                    label: "System status",
+                    value: "Production, multi-project use",
+                  },
+                  {
+                    label: "Primary risk",
+                    value: "Legacy dependencies & undocumented architecture",
+                  },
+                ],
 
-  images: [
-    {
-      src: "/img/case-studies/comment-map/debug.png",
-      alt: "Debugging map marker rendering behavior in a legacy Google Maps implementation",
-      caption:
-        "Isolating rendering failures by reducing complexity to a known-good baseline",
-    },
-  ],
-}
-    ],
-  },
-  {
-    title: "Product & Startup Engineering",
-    role: "Full-Stack, Frontend Architecture",
-    slug: "soaria",
-    sectionId: "soaria",
-    description: "Visual Arts & Spacious Technology. A creative collective exploring the intersection of art, technology, and immersive experiences. We create generative visuals, interactive installations, and experimental digital media.",
-    image: "/img/VAST/polygonia-v5-L.png",
-    imageAlt: "na",
-    ctaLink: "/work/soaria",
-    ctaText: "Learn More",
-    accentColor: "accent2",
-  },
-  {
-    title: "Creative Technology & Digital Artist",
-    role: "Interactive, Experimental, Visual Systems, Graphic Design",
-    slug: "touchdesigner",
-    sectionId: "creative-tech",
-    description: "Real-time visual systems built with TouchDesigner. Interactive installations, generative graphics, and live performance visuals. Exploring the creative potential of node-based programming and procedural design.",
-    image: "/img/VAST/psuedo-plexus-clouds.png",
-    imageAlt: "Creative Technology - TouchDesigner generative visuals",
-    ctaLink: "/work/touchdesigner",
-    ctaText: "View Portfolio",
-    accentColor: "accent",
-  },
-  {
-    title: "Portfolio Website (akpfolio.com)",
-    role: "Web design & Development",
-    slug: "portfolio",
-    sectionId: "portfolio-site",
-    isPortfolio: true,
-  },
+                images: [
+                  {
+                    src: "/img/case-studies/comment-map/debug.png",
+                    alt: "Debugging map marker rendering behavior in a legacy Google Maps implementation",
+                    caption:
+                      "Isolating rendering failures by reducing complexity to a known-good baseline",
+                  },
+                ],
+              }
+                  ],
+                },
+                {
+                  title: "Product & Startup Engineering",
+                  role: "Full-Stack, Frontend Architecture",
+                  slug: "soaria",
+                  sectionId: "soaria",
+                  description: "Full-stack product development for creative technology startups—real-time collaboration tools and immersive digital experiences.",
+                  image: "/img/VAST/polygonia-v5-L.png",
+                  imageAlt: "na",
+                  ctaLink: "/work/soaria",
+                  ctaText: "Learn More",
+                  accentColor: "accent2",
+                },
+                {
+                  title: "Creative Technology & Digital Artist",
+                  role: "Interactive, Experimental, Visual Systems, Graphic Design",
+                  slug: "touchdesigner",
+                  sectionId: "creative-tech",
+                  description: "Real-time visual systems and generative art—TouchDesigner, WebGL, interactive installations for live performance and exhibitions.",
+                  image: "/img/VAST/psuedo-plexus-clouds.png",
+                  imageAlt: "Creative Technology - TouchDesigner generative visuals",
+                  ctaLink: "/work/touchdesigner",
+                  ctaText: "View Portfolio",
+                  accentColor: "accent",
+                },
+                {
+                  title: "Portfolio Website (akpfolio.com)",
+                  role: "Web design & Development",
+                  slug: "portfolio",
+                  sectionId: "portfolio-site",
+                  isPortfolio: true,
+                },
 ];
 
 // Helper functions for case studies
