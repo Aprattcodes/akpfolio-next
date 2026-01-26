@@ -22,7 +22,7 @@ export default function Home() {
     <>
       <HeroLiquid fadeEndPx={900} />
       <ScrollButtons />
-      <main className="text-lightest relative">
+      <main className="text-lightest relative overflow-x-hidden">
       {/* Full-width intro sections */}
       <Hero />
       <Bio />

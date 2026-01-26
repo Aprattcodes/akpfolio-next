@@ -12,10 +12,10 @@ export default function Hero() {
   };
 
   return (
-    <section className="flex min-h-screen flex-col items-center justify-center text-center px-6 background-darkest">
+    <section className="flex min-h-dvh flex-col items-center justify-center text-center px-6 background-darkest">
       <div className="relative max-w-5xl w-full">
         {/* Glass background */}
-        <div className="absolute inset-0 bg-darkest/80 backdrop-blur-xl rounded-3xl border border-lightest/10 shadow-2xl -m-8 sm:-m-12" />
+        <div className="absolute inset-0 bg-darkest/80 backdrop-blur-xl rounded-3xl border border-lightest/10 shadow-2xl -m-4 sm:-m-12" />
 
         {/* Content */}
         <div className="relative z-10 px-8 py-12 sm:px-12 sm:py-16">
