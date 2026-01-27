@@ -74,7 +74,7 @@ export default function CaseStudiesView({
   return (
     <section
       id={sectionId}
-      className="min-h-screen flex items-center justify-center px-6 sm:px-12 lg:px-24 bg-darkest overflow-x-clip"
+      className="min-h-screen flex items-center justify-center px-6 sm:px-12 lg:px-24 bg-darkest overflow-x-clip mb-16 md:mb-0 border-t md:border-t-0 border-lightest/5 pt-12 md:pt-0"
     >
       <div className="mx-auto max-w-6xl w-full">
         <motion.div

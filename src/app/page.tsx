@@ -29,9 +29,9 @@ export default function Home() {
       <Hero />
       <Bio />
 
-      {/* Mobile: Section Title */}
-      <div className="md:hidden px-6 pt-16 pb-8">
-        <h2 className="text-3xl font-heading uppercase tracking-tight text-lightest">
+      {/* Mobile: Section Title with divider */}
+      <div className="md:hidden px-6 pt-20 pb-8 border-t border-lightest/5">
+        <h2 className="text-6xl font-heading uppercase tracking-tight text-lightest">
           Areas of Practice
         </h2>
       </div>

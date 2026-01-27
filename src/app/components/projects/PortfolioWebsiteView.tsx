@@ -8,7 +8,7 @@ export default function PortfolioWebsiteView() {
   return (
     <section
       id="portfolio-site"
-      className="min-h-screen flex items-center justify-center px-6 sm:px-12 lg:px-24 bg-darkest"
+      className="min-h-screen flex items-center justify-center px-6 sm:px-12 lg:px-24 bg-darkest mb-16 md:mb-0 border-t border-b md:border-b-0 md:border-t-0 border-lightest/5 pt-12 md:pt-0 pb-12 md:pb-0"
     >
       <div className="mx-auto max-w-6xl w-full">
         <motion.div
