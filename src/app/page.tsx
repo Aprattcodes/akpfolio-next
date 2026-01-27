@@ -24,22 +24,22 @@ export default function Home() {
       <HeroLiquid fadeEndPx={900} />
       <ScrollButtons />
       <ProjectsFAB activeSection={activeSection} />
-      <main className="text-lightest relative overflow-x-hidden">
+      <main className="text-lightest relative">
       {/* Full-width intro sections */}
       <Hero />
       <Bio />
 
+      {/* Mobile: Section Title */}
+      <div className="md:hidden px-6 pt-16 pb-8">
+        <h2 className="text-3xl font-heading uppercase tracking-tight text-lightest">
+          Areas of Practice
+        </h2>
+      </div>
+
       {/* Split-screen project showcase */}
       <div id="projects" className="flex flex-col md:flex-row">
-        {/* Mobile: Section Title */}
-        <div className="md:hidden px-6 pt-16 pb-8">
-          <h2 className="text-3xl font-heading uppercase tracking-tight text-lightest">
-            Areas of Practice
-          </h2>
-        </div>
-
-        {/* Left: Sticky Project List (desktop only) */}
-        <aside className="hidden md:block md:w-1/2 md:sticky md:top-0 md:h-screen md:overflow-hidden">
+        {/* Left: Sticky Project List */}
+        <aside className="md:w-1/2 md:sticky md:top-0 md:h-screen md:overflow-hidden">
           <ProjectsList activeSection={activeSection} />
         </aside>
 

@@ -48,14 +48,14 @@ export default function CaseStudiesView({
   const [activeIndex, setActiveIndex] = useState(0);
   const scrollContainerRef = useRef<HTMLDivElement>(null);
 
-  // Track scroll position to update active dot
+  // Track scroll position to update active dot (mobile only)
   useEffect(() => {
     const container = scrollContainerRef.current;
     if (!container) return;
 
     const handleScroll = () => {
       const scrollLeft = container.scrollLeft;
-      const cardWidth = container.offsetWidth * 0.85 + 16; // 85vw + gap
+      const cardWidth = container.offsetWidth * 0.85 + 16;
       const newIndex = Math.round(scrollLeft / cardWidth);
       setActiveIndex(Math.min(newIndex, caseStudies.length - 1));
     };
@@ -64,22 +64,17 @@ export default function CaseStudiesView({
     return () => container.removeEventListener("scroll", handleScroll);
   }, [caseStudies.length]);
 
-  // Scroll to card when dot is clicked
   const scrollToCard = (index: number) => {
     const container = scrollContainerRef.current;
     if (!container) return;
-
-    const cardWidth = container.offsetWidth * 0.85 + 16; // 85vw + gap
-    container.scrollTo({
-      left: cardWidth * index,
-      behavior: "smooth",
-    });
+    const cardWidth = container.offsetWidth * 0.85 + 16;
+    container.scrollTo({ left: cardWidth * index, behavior: "smooth" });
   };
 
   return (
     <section
       id={sectionId}
-      className="min-h-screen flex items-center justify-center px-6 sm:px-12 lg:px-24 bg-darkest py-12 md:py-0"
+      className="min-h-screen flex items-center justify-center px-6 sm:px-12 lg:px-24 bg-darkest overflow-x-clip"
     >
       <div className="mx-auto max-w-6xl w-full">
         <motion.div
@@ -87,7 +82,7 @@ export default function CaseStudiesView({
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="space-y-8 md:space-y-12"
+          className="space-y-12"
         >
           {/* Header Section */}
           <motion.div
@@ -100,105 +95,17 @@ export default function CaseStudiesView({
             <span className={`text-sm font-caption uppercase tracking-wider ${accentClass}`}>
               {role}
             </span>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-heading uppercase tracking-tight text-lightest">
+            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-heading uppercase tracking-tight text-lightest">
               {title}
             </h2>
             {description && (
-              <p className="text-base sm:text-lg text-lightest/90 leading-relaxed max-w-3xl mx-auto">
+              <p className="text-lg text-lightest/90 leading-relaxed max-w-3xl mx-auto">
                 {description}
               </p>
             )}
           </motion.div>
 
-          {/* Mobile: Horizontal Scroll Carousel */}
-          <div className="md:hidden -mx-6">
-            <motion.div
-              ref={scrollContainerRef}
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.3 }}
-              className="flex gap-4 overflow-x-auto snap-x snap-mandatory px-6 pb-4 scrollbar-hide"
-              style={{
-                scrollbarWidth: "none",
-                msOverflowStyle: "none",
-              }}
-            >
-              {caseStudies.map((caseStudy, index) => (
-                <div
-                  key={caseStudy.slug}
-                  className="flex-shrink-0 w-[85vw] snap-center bg-lightest/5 backdrop-blur-sm border border-lightest/10 rounded-lg overflow-hidden flex flex-col"
-                >
-                  {/* Image */}
-                  <div className="relative h-44 w-full overflow-hidden">
-                    <Image
-                      src={caseStudy.image}
-                      alt={caseStudy.imageAlt}
-                      fill
-                      className="object-cover"
-                      sizes="85vw"
-                    />
-                  </div>
-
-                  {/* Content */}
-                  <div className="p-5 space-y-3 flex-1 flex flex-col">
-                    <h3 className="text-lg font-heading uppercase tracking-tight text-lightest">
-                      {caseStudy.title}
-                    </h3>
-                    <p className="text-sm text-lightest/70 line-clamp-3 flex-1">
-                      {caseStudy.description}
-                    </p>
-
-                    {/* Optional Tags - show fewer on mobile */}
-                    {caseStudy.tags && caseStudy.tags.length > 0 && (
-                      <div className="flex flex-wrap gap-1.5 pt-2">
-                        {caseStudy.tags.slice(0, 3).map((tag) => (
-                          <span
-                            key={tag}
-                            className={`text-xs px-2 py-0.5 rounded ${accentClass} ${bgClass}`}
-                          >
-                            {tag}
-                          </span>
-                        ))}
-                        {caseStudy.tags.length > 3 && (
-                          <span className="text-xs px-2 py-0.5 text-lightest/50">
-                            +{caseStudy.tags.length - 3}
-                          </span>
-                        )}
-                      </div>
-                    )}
-
-                    {/* CTA Link */}
-                    <Link
-                      href={`/work/case-studies/${caseStudy.slug}`}
-                      className={`inline-flex items-center text-sm font-semibold ${accentClass} hover:underline pt-2`}
-                    >
-                      View Case Study →
-                    </Link>
-                  </div>
-                </div>
-              ))}
-            </motion.div>
-
-            {/* Dot Indicators */}
-            <div className="flex justify-center gap-2 pt-4 px-6">
-              {caseStudies.map((_, index) => (
-                <button
-                  key={index}
-                  onClick={() => scrollToCard(index)}
-                  className={`h-2 rounded-full transition-all duration-300 ${
-                    activeIndex === index
-                      ? `w-6 ${dotActiveClass}`
-                      : "w-2 bg-lightest/30 hover:bg-lightest/50"
-                  }`}
-                  aria-label={`Go to case study ${index + 1}`}
-                  aria-current={activeIndex === index ? "true" : undefined}
-                />
-              ))}
-            </div>
-          </div>
-
-          {/* Desktop: Grid Layout */}
+          {/* Case Studies Grid - Desktop */}
           <motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
@@ -264,6 +171,75 @@ export default function CaseStudiesView({
               </motion.div>
             ))}
           </motion.div>
+
+          {/* Case Studies Carousel - Mobile */}
+          <div className="md:hidden -mx-6">
+            <motion.div
+              ref={scrollContainerRef}
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              className="flex gap-4 overflow-x-auto snap-x snap-mandatory px-6 pb-4 scrollbar-hide"
+              style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+            >
+              {caseStudies.map((caseStudy) => (
+                <div
+                  key={caseStudy.slug}
+                  className="shrink-0 w-[85vw] snap-center bg-lightest/5 backdrop-blur-sm border border-lightest/10 rounded-lg overflow-hidden flex flex-col"
+                >
+                  <div className="relative h-44 w-full overflow-hidden">
+                    <Image
+                      src={caseStudy.image}
+                      alt={caseStudy.imageAlt}
+                      fill
+                      className="object-cover"
+                      sizes="85vw"
+                    />
+                  </div>
+                  <div className="p-5 space-y-3 flex-1 flex flex-col">
+                    <h3 className="text-lg font-heading uppercase tracking-tight text-lightest">
+                      {caseStudy.title}
+                    </h3>
+                    <p className="text-sm text-lightest/70 line-clamp-3 flex-1">
+                      {caseStudy.description}
+                    </p>
+                    {caseStudy.tags && caseStudy.tags.length > 0 && (
+                      <div className="flex flex-wrap gap-1.5 pt-2">
+                        {caseStudy.tags.slice(0, 3).map((tag) => (
+                          <span key={tag} className={`text-xs px-2 py-0.5 rounded ${accentClass} ${bgClass}`}>
+                            {tag}
+                          </span>
+                        ))}
+                        {caseStudy.tags.length > 3 && (
+                          <span className="text-xs px-2 py-0.5 text-lightest/50">+{caseStudy.tags.length - 3}</span>
+                        )}
+                      </div>
+                    )}
+                    <Link
+                      href={`/work/case-studies/${caseStudy.slug}`}
+                      className={`inline-flex items-center text-sm font-semibold ${accentClass} hover:underline pt-2`}
+                    >
+                      View Case Study →
+                    </Link>
+                  </div>
+                </div>
+              ))}
+            </motion.div>
+            {/* Dot Indicators */}
+            <div className="flex justify-center gap-2 pt-4 px-6">
+              {caseStudies.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => scrollToCard(index)}
+                  className={`h-2 rounded-full transition-all duration-300 ${
+                    activeIndex === index ? `w-6 ${dotActiveClass}` : "w-2 bg-lightest/30 hover:bg-lightest/50"
+                  }`}
+                  aria-label={`Go to case study ${index + 1}`}
+                />
+              ))}
+            </div>
+          </div>
         </motion.div>
       </div>
     </section>
