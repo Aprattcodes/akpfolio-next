@@ -42,7 +42,7 @@ export default function ContactSection() {
             className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-8"
           >
             <a
-              href="mailto:your.email@example.com"
+              href="mailto:alyssakpratt@gmail.com"
               className="inline-flex items-center gap-2 rounded-md bg-accent2 px-6 py-3 font-semibold text-darkest hover:brightness-110 transition-all duration-200 w-full sm:w-auto justify-center"
               aria-label="Send email"
             >
@@ -71,7 +71,7 @@ export default function ContactSection() {
             className="flex gap-6 justify-center pt-8"
           >
             <a
-              href="https://github.com/yourusername"
+              href="https://github.com/Aprattcodes"
               target="_blank"
               rel="noopener noreferrer"
               className="text-lightest/70 hover:text-accent2 transition-colors duration-200"
@@ -80,7 +80,7 @@ export default function ContactSection() {
               <Github size={28} />
             </a>
             <a
-              href="https://linkedin.com/in/yourusername"
+              href="https://linkedin.com/in/alyssakpratt"
               target="_blank"
               rel="noopener noreferrer"
               className="text-lightest/70 hover:text-accent2 transition-colors duration-200"

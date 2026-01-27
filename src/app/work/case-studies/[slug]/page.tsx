@@ -119,10 +119,14 @@ export default async function CaseStudyPage({ params }: PageProps) {
       {/* Hero Image */}
       <section className="px-5 md:px-8">
         <div className="mx-auto w-full max-w-6xl">
-          <div className="relative overflow-hidden rounded-2xl border border-lightest/10 bg-lightest/5">
-            <div className="aspect-video w-full flex items-center justify-center text-lightest/40">
-              <p className="text-sm">Image: {caseStudy.hero?.imageAlt || caseStudy.imageAlt}</p>
-            </div>
+          <div className="relative overflow-hidden rounded-2xl border object-fill border-lightest/10 bg-lightest/5">
+            {caseStudy.hero ? (
+              <img src={caseStudy.hero.image} alt={caseStudy.imageAlt} />
+            ) : (
+              <div className="aspect-video w-full flex items-center justify-center text-lightest/40">
+                <p className="text-sm">No hero image available</p>
+              </div>
+            )}
           </div>
 
           {/* Summary and Stats */}
