@@ -38,8 +38,8 @@ export default function Home() {
 
       {/* Split-screen project showcase */}
       <div id="projects" className="flex flex-col md:flex-row">
-        {/* Left: Sticky Project List */}
-        <aside className="md:w-1/2 md:sticky md:top-0 md:h-screen md:overflow-hidden">
+        {/* Left: Sticky Project List - Desktop only */}
+        <aside className="hidden md:block md:w-1/2 md:sticky md:top-0 md:h-screen md:overflow-hidden">
           <ProjectsList activeSection={activeSection} />
         </aside>
 
