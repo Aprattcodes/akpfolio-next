@@ -92,6 +92,7 @@ function LiquidMaterial({
 }: Props) {
   const { size } = useThree();
   const matRef = useRef<THREE.ShaderMaterial>(null);
+  const scrollYRef = useRef(0);
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(() => {
     if (typeof window !== "undefined") {
       return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -118,6 +119,34 @@ function LiquidMaterial({
   }, []);
 
   useEffect(() => {
+    const handleScroll = () => {
+      scrollYRef.current = window.scrollY || window.pageYOffset || 0;
+    };
+
+    // Capture initial scroll immediately
+    handleScroll();
+
+    // Also capture after a brief delay (for browser paint)
+    const timeoutId = setTimeout(handleScroll, 100);
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+
+    return () => {
+      clearTimeout(timeoutId);
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+  // Force initial opacity update
+  useEffect(() => {
+    if (matRef.current) {
+      const currentScroll = scrollYRef.current || 0;
+      const initialFade = Math.max(0, Math.min(1, 1 - (currentScroll / fadeEndPx)));
+      matRef.current.uniforms.u_opacity.value = initialFade;
+    }
+  }, [fadeEndPx]);
+
+  useEffect(() => {
     if (matRef.current) {
       matRef.current.uniforms.u_res.value.set(size.width, size.height);
     }
@@ -125,12 +154,25 @@ function LiquidMaterial({
 
   useFrame((state) => {
     if (!prefersReducedMotion && matRef.current) {
-      const scrollY = window.scrollY;
-      const fade = 1 - Math.min(scrollY / fadeEndPx, 1);
+      const currentScroll = scrollYRef.current || 0;
+      const fade = Math.max(0, Math.min(1, 1 - (currentScroll / fadeEndPx)));
+
       matRef.current.uniforms.u_opacity.value = fade;
       matRef.current.uniforms.u_time.value = state.clock.getElapsedTime() * 0.8;
     }
   });
+
+  // Handle remounting (React Strict Mode / tab duplication)
+  useEffect(() => {
+    if (matRef.current) {
+      matRef.current.needsUpdate = true;
+    }
+    return () => {
+      if (matRef.current) {
+        matRef.current.dispose();
+      }
+    };
+  }, []);
 
   return (
     <mesh>
@@ -148,11 +190,19 @@ function LiquidMaterial({
 }
 
 function LiquidScene(props: Props) {
-  const { gl } = useThree();
+  const { gl, invalidate } = useThree();
 
   useEffect(() => {
     gl.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-  }, [gl]);
+
+    // Force a render after mount to ensure canvas is active
+    invalidate();
+
+    return () => {
+      // Cleanup GL context on unmount
+      gl.dispose();
+    };
+  }, [gl, invalidate]);
 
   return (
     <>
@@ -165,7 +215,12 @@ function LiquidScene(props: Props) {
 export default function HeroLiquid(props: Props) {
   return (
     <div className="fixed inset-0 -z-10 pointer-events-none will-change-transform">
-      <Canvas gl={{ antialias: false }} dpr={[1, 2]} frameloop="always">
+      <Canvas
+        gl={{ antialias: false, alpha: true }}
+        dpr={[1, 2]}
+        frameloop="always"
+        style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }}
+      >
         <LiquidScene {...props} />
       </Canvas>
     </div>
