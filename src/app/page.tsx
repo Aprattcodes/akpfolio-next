@@ -21,12 +21,13 @@ export default function Home() {
 
   return (
     <>
-      <HeroLiquid fadeEndPx={900} />
+      <HeroLiquid fadeEndPx={600} colors={["#38bdf8", "#a78bfa", "#ff8c7a"]} />
       <ScrollButtons />
       <ProjectsFAB activeSection={activeSection} />
       <main className="text-lightest relative">
       {/* Full-width intro sections */}
       <Hero />
+      <div className="bg-darkest relative">
       <Bio />
 
       {/* Mobile: Section Title with divider */}
@@ -51,6 +52,7 @@ export default function Home() {
 
       {/* Full-width outro section */}
       <ContactSection />
+      </div>
     </main>
     </>
   );
