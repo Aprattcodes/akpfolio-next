@@ -20,7 +20,7 @@ export default function Hero() {
         {/* Content */}
         <div className="relative z-10 px-8 py-12 sm:px-12 sm:py-16">
           <motion.h1
-            className="text-5xl sm:text-6xl font-heading uppercase tracking-tight text-lightest"
+            className="text-3xl sm:text-5xl lg:text-6xl font-heading uppercase tracking-tight text-lightest"
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
