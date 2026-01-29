@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useRef } from "react";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import { OrthographicCamera } from "@react-three/drei";
 import * as THREE from "three";
@@ -19,7 +19,7 @@ void main() {
 `;
 
 const fragmentShader = `
-precision highp float;
+precision mediump float;
 varying vec2 vUv;
 uniform float u_time;
 uniform vec2  u_res;
@@ -93,12 +93,6 @@ function LiquidMaterial({
   const { size } = useThree();
   const matRef = useRef<THREE.ShaderMaterial>(null);
   const scrollYRef = useRef(0);
-  const [prefersReducedMotion, setPrefersReducedMotion] = useState(() => {
-    if (typeof window !== "undefined") {
-      return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    }
-    return false;
-  });
 
   const uniforms = useMemo(
     () => ({
@@ -109,14 +103,6 @@ function LiquidMaterial({
     }),
     [size.width, size.height, colors]
   );
-
-  // Check for reduced motion preference changes
-  useEffect(() => {
-    const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
-    const handler = (e: MediaQueryListEvent) => setPrefersReducedMotion(e.matches);
-    mediaQuery.addEventListener("change", handler);
-    return () => mediaQuery.removeEventListener("change", handler);
-  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -153,26 +139,16 @@ function LiquidMaterial({
   }, [size]);
 
   useFrame((state) => {
-    if (!prefersReducedMotion && matRef.current) {
-      const currentScroll = scrollYRef.current || 0;
-      const fade = Math.max(0, Math.min(1, 1 - (currentScroll / fadeEndPx)));
+    if (!matRef.current) return;
 
-      matRef.current.uniforms.u_opacity.value = fade;
-      matRef.current.uniforms.u_time.value = state.clock.getElapsedTime() * 0.8;
-    }
+    // Update scroll-based opacity EVERY FRAME
+    const currentScroll = scrollYRef.current || 0;
+    const fade = Math.max(0, Math.min(1, 1 - (currentScroll / fadeEndPx)));
+    matRef.current.uniforms.u_opacity.value = fade;
+
+    // Update time for animation
+    matRef.current.uniforms.u_time.value = state.clock.getElapsedTime() * 0.8;
   });
-
-  // Handle remounting (React Strict Mode / tab duplication)
-  useEffect(() => {
-    if (matRef.current) {
-      matRef.current.needsUpdate = true;
-    }
-    return () => {
-      if (matRef.current) {
-        matRef.current.dispose();
-      }
-    };
-  }, []);
 
   return (
     <mesh>
@@ -194,14 +170,7 @@ function LiquidScene(props: Props) {
 
   useEffect(() => {
     gl.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-
-    // Force a render after mount to ensure canvas is active
     invalidate();
-
-    return () => {
-      // Cleanup GL context on unmount
-      gl.dispose();
-    };
   }, [gl, invalidate]);
 
   return (
@@ -216,10 +185,23 @@ export default function HeroLiquid(props: Props) {
   return (
     <div className="fixed inset-0 -z-10 pointer-events-none will-change-transform">
       <Canvas
-        gl={{ antialias: false, alpha: true }}
+        gl={{
+          antialias: false,
+          alpha: true,
+          powerPreference: "high-performance",
+          preserveDrawingBuffer: false,
+          failIfMajorPerformanceCaveat: false,
+        }}
         dpr={[1, 2]}
         frameloop="always"
-        style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }}
+        style={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          width: '100%',
+          height: '100%',
+          touchAction: 'none',
+        }}
       >
         <LiquidScene {...props} />
       </Canvas>
