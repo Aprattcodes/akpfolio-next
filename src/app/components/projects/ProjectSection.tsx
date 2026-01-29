@@ -95,7 +95,7 @@ export default function ProjectSection({ project }: ProjectSectionProps) {
               <span className={`text-sm font-caption uppercase tracking-wider ${accentClass}`}>
                 {role}
               </span>
-              <h2 className="text-4xl sm:text-5xl lg:text-6xl font-heading uppercase tracking-tight text-lightest mt-2">
+              <h2 className="text-3xl font-heading uppercase tracking-tight text-lightest mt-2">
                 {title}
               </h2>
             </motion.div>

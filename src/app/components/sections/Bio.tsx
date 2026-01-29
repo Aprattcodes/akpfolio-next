@@ -16,7 +16,7 @@ export default function Bio() {
         >
           {/* Image Column */}
           <div className="order-1 md:order-2 flex justify-center">
-            <div className="relative w-64 aspect-[3/4] sm:w-80 lg:w-96">
+            <div className="relative w-64 aspect-3/4 sm:w-80 lg:w-96">
               <Image
                 src="/img/Alyssa-2024-Headshot-full.jpg"
                 alt="Professional headshot of Alyssa, a creative technologist and developer"
