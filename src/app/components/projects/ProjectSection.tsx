@@ -122,6 +122,10 @@ export default function ProjectSection({ project }: ProjectSectionProps) {
               >
                 <Link
                   href={ctaLink}
+                  {...(ctaLink.startsWith("http") && {
+                    target: "_blank",
+                    rel: "noopener noreferrer",
+                  })}
                   className={`inline-flex items-center rounded-md border-2 ${borderClass} px-6 py-3 font-semibold text-lightest ${hoverClass} transition-colors duration-200`}
                 >
                   {ctaText}

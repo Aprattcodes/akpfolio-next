@@ -89,7 +89,7 @@ export default function PortfolioWebsiteView() {
             className="pt-8"
           >
             <Link
-              href="https://github.com/yourusername/portfolio"
+              href="https://github.com/Aprattcodes/akpfolio-next.git"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center rounded-md border-2 border-lightest px-6 py-3 font-semibold text-lightest hover:bg-lightest/10 transition-colors duration-200"

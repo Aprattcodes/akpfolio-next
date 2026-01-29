@@ -17,13 +17,13 @@ export default function RootLayout({ children }: { children: ReactNode }) {
               AKP
             </Link>
             <div className="flex gap-6 text-sm">
-              <Link href="/work" className="hover:opacity-80">
+              <Link href="#projects" className="hover:opacity-80">
                 Work
               </Link>
-              <Link href="/about" className="hover:opacity-80">
+              <Link href="#about" className="hover:opacity-80">
                 About
               </Link>
-              <Link href="/contact" className="hover:opacity-80">
+              <Link href="#contact" className="hover:opacity-80">
                 Contact
               </Link>
             </div>

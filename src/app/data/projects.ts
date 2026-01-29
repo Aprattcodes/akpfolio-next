@@ -75,7 +75,7 @@ export const projects: Project[] = [
         title: "Warm Springs Power Pathway Website",
         description:
           "Squarespace microsite with ArcGIS mapping and bilingual Jotform integration for public engagement.",
-        image: "/img/case-studies/warm-springs/hero.png",
+        image: "/img/JLA/warmsprings-home-thumbnail.png",
         imageAlt:
           "Warm Springs Power Pathway website homepage showing bilingual navigation and project overview",
         slug: "warm-springs-power-pathway",
@@ -99,7 +99,7 @@ export const projects: Project[] = [
         },
 
         hero: {
-          image: "/img/case-studies/warm-springs/hero.png",
+          image: "/img/JLA/warmsprings-home-thumbnail.png",
           imageAlt:
             "Warm Springs Power Pathway website hero section with project context and navigation",
         },
@@ -156,12 +156,12 @@ export const projects: Project[] = [
 
         images: [
           {
-            src: "/img/case-studies/warm-springs/map.png",
+            src: "/img/JLA/warmsprings-home-thumbnail.png",
             alt: "Interactive ArcGIS map showing the transmission line route",
             caption: "Interactive map visualizing the proposed transmission line route",
           },
           {
-            src: "/img/case-studies/warm-springs/survey.png",
+            src: "/img/JLA/warmsprings-home-thumbnail.pngg",
             alt: "Bilingual public survey embedded within the website",
             caption: "Custom bilingual survey with synchronized language toggles",
           },
@@ -186,7 +186,7 @@ export const projects: Project[] = [
             title: "PGE Milliken Transmission Line Rebuild",
             description:
               "WCAG-compliant construction awareness site with ArcGIS Experience Builder interactive mapping.",
-            image: "/img/case-studies/milliken/hero.png",
+            image: "/img/JLA/miliken-home-thumbnail.png",
             imageAlt:
               "Milliken Transmission Line Rebuild website hero showing project overview and navigation",
             slug: "pge-milliken-transmission-line-rebuild",
@@ -209,7 +209,7 @@ export const projects: Project[] = [
             },
 
             hero: {
-              image: "/img/case-studies/milliken/hero.png",
+              image: "/img/JLA/miliken-home-thumbnail.png",
               imageAlt:
                 "Milliken Transmission Line Rebuild website with an interactive map module and project context content",
             },
@@ -322,12 +322,12 @@ export const projects: Project[] = [
 
             images: [
               {
-                src: "/img/case-studies/milliken/map.png",
+                src: "/img/JLA/miliken-interactive-map-view-1.png",
                 alt: "ArcGIS Experience Builder interactive map showing corridor segments and construction context",
                 caption: "Interactive map experience built in ArcGIS Experience Builder to connect segments with real-world location context",
               },
               {
-                src: "/img/case-studies/milliken/timeline.png",
+                src: "/img/JLA/miliken-interactive-map-view-2.png",
                 alt: "Responsive project timeline component showing construction phases and milestones",
                 caption: "Custom-coded timeline to communicate multi-phase construction in plain language",
               },
@@ -479,7 +479,7 @@ export const projects: Project[] = [
 
                 images: [
                   {
-                    src: "/img/case-studies/comment-map/debug.png",
+                    src: "/img/JLA/comment-map-2.png",
                     alt: "Debugging map marker rendering behavior in a legacy Google Maps implementation",
                     caption:
                       "Isolating rendering failures by reducing complexity to a known-good baseline",
@@ -494,10 +494,10 @@ export const projects: Project[] = [
                   slug: "soaria",
                   sectionId: "soaria",
                   description: "Full-stack product development for creative technology startups—real-time collaboration tools and immersive digital experiences.",
-                  image: "/img/VAST/polygonia-v5-L.png",
-                  imageAlt: "na",
-                  ctaLink: "/work/soaria",
-                  ctaText: "Learn More",
+                  image: "/img/Soaria/soaria-thumbnail.png",
+                  imageAlt: "Soaria website homepage",
+                  ctaLink: "https://www.soaria.xyz/",
+                  ctaText: "View Company Website",
                   accentColor: "accent2",
                 },
                 {
