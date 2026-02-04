@@ -63,9 +63,7 @@ export const projects: Project[] = [
     role: "UX Developer, Accessibility, Frontend",
     slug: "project-list-1",
     sectionId: "wcag",
-    description: "WCAG-compliant public engagement systems for infrastructure projects—bilingual mapping, surveys, and microsites serving 2,000+ stakeholders.",
-    image: "/img/VAST/psuedo-plexus-clouds.png",
-    imageAlt: "na",
+    description: "Supporting government agencies with digital outreach by leading and developing WCAG-compliant websites and applications for public engagement.",
     ctaLink: "/work/case-studies",
     ctaText: "View Case Studies",
     accentColor: "accent",
@@ -81,11 +79,11 @@ export const projects: Project[] = [
         slug: "warm-springs-power-pathway",
         tags: [
           "WCAG 2.1 AA",
-          "Accessibility",
           "Squarespace",
           "ArcGIS",
           "Bilingual UX",
-          "Public Infrastructure",
+          "HTML/CSS",
+          "JavaScript"
         ],
 
         meta: {
@@ -192,12 +190,11 @@ export const projects: Project[] = [
             slug: "pge-milliken-transmission-line-rebuild",
             tags: [
               "WCAG 2.1 AA",
-              "Accessibility",
               "Squarespace",
-              "ArcGIS Experience Builder",
+              "ArcGIS",
               "Bilingual UX",
-              "Public Infrastructure",
-              "Interactive Mapping",
+              "HTML/CSS",
+              "JavaScript"
             ],
 
             meta: {
@@ -345,9 +342,8 @@ export const projects: Project[] = [
                   "Legacy Systems",
                   "Production Debugging",
                   "Google Maps API",
-                  "Public Sector",
-                  "Risk-Aware Engineering",
-                  "Frontend Maintenance",
+                  "JavaScript",
+                  "PHP"
                 ],
 
                 meta: {
@@ -489,11 +485,11 @@ export const projects: Project[] = [
                   ],
                 },
                 {
-                  title: "Product & Startup Engineering",
+                  title: "Startup Frontend Engineering",
                   role: "Full-Stack, Frontend Architecture",
                   slug: "soaria",
                   sectionId: "soaria",
-                  description: "Full-stack product development for creative technology startups—real-time collaboration tools and immersive digital experiences.",
+                  description: "Frontend and full stack engineering support for an early stage startup (Soaria) building a job search platform that uses keyword matching and behavioral learning systems to connect candidates with roles aligned to their skills.",
                   image: "/img/Soaria/soaria-thumbnail.png",
                   imageAlt: "Soaria website homepage",
                   ctaLink: "https://www.soaria.xyz/",
@@ -501,11 +497,11 @@ export const projects: Project[] = [
                   accentColor: "accent2",
                 },
                 {
-                  title: "Creative Technology & Digital Artist",
-                  role: "Interactive, Experimental, Visual Systems, Graphic Design",
+                  title: "Creative Technology & Digital Art",
+                  role: "TouchDesigner, Python, Visual Systems, Graphic Design",
                   slug: "touchdesigner",
                   sectionId: "creative-tech",
-                  description: "Real-time visual systems and generative art—TouchDesigner, WebGL, interactive installations for live performance and exhibitions.",
+                  description: "Designed and developed real time visual systems and generative art using TouchDesigner and WebGL, creating interactive installations and live visuals for music performances. Provided graphic design and creative direction for VAST.",
                   image: "/img/VAST/psuedo-plexus-clouds.png",
                   imageAlt: "Creative Technology - TouchDesigner generative visuals",
                   ctaLink: "/work/touchdesigner",

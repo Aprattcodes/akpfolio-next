@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { Code2, Palette, Zap } from "lucide-react";
+import { Code2, Palette, Zap, PaintBucket } from "lucide-react";
 
 export default function PortfolioWebsiteView() {
   return (
@@ -70,12 +70,12 @@ export default function PortfolioWebsiteView() {
 
             {/* Card 3 */}
             <div className="bg-lightest/5 backdrop-blur-sm border border-lightest/10 rounded-lg p-6 space-y-3 hover:bg-lightest/10 transition-colors duration-300">
-              <Zap className="text-accent w-10 h-10 mx-auto" />
+              <PaintBucket className="text-accent w-10 h-10 mx-auto" />
               <h3 className="text-xl font-heading uppercase tracking-tight text-lightest">
-                Framer Motion
+                Three.js
               </h3>
               <p className="text-sm text-lightest/70">
-                Smooth animations and scroll-based interactions
+                Liquid effect hero
               </p>
             </div>
           </motion.div>
