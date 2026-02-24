@@ -33,11 +33,11 @@ export default function RootLayout({ children }: { children: ReactNode }) {
     <html lang="en">
       <body className={`${montserrat.variable} ${titillium.variable} ${ptSansCaption.variable}`}>
         <header className="sticky top-0 z-50 backdrop-blur-md bg-darkest/40 border-b border-lightest/10">
-          <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4 text-lightest">
+          <nav className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4 text-lightest gap-4">
             <Link href="/" className="font-heading text-xl">
-              Alyssa Pratt<span className="text-accent2">.</span>
+              Alyssa<span className="text-accent2">.</span>
             </Link>
-            <div className="flex items-center gap-6 text-sm">
+            <div className="flex items-center gap-4 ml-auto text-sm">
               <Link href="#projects" className="hover:opacity-80">
                 Work
               </Link>
@@ -47,12 +47,12 @@ export default function RootLayout({ children }: { children: ReactNode }) {
               <Link href="#contact" className="hover:opacity-80">
                 Contact
               </Link>
-              <span className="h-4 w-px bg-lightest/20" aria-hidden="true" />
+              <span className="hidden sm:block h-4 w-px bg-lightest/20" aria-hidden="true" />
               <a
                 href="https://github.com/Aprattcodes"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-lightest/70 hover:text-accent2 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-accent2 focus:ring-offset-2 focus:ring-offset-darkest rounded-sm"
+                className="hidden sm:flex text-lightest/70 hover:text-accent2 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-accent2 focus:ring-offset-2 focus:ring-offset-darkest rounded-sm"
                 aria-label="GitHub profile"
               >
                 <Github size={20} />
@@ -61,13 +61,34 @@ export default function RootLayout({ children }: { children: ReactNode }) {
                 href="https://linkedin.com/in/alyssakpratt"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-lightest/70 hover:text-accent2 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-accent2 focus:ring-offset-2 focus:ring-offset-darkest rounded-sm"
+                className="hidden sm:flex text-lightest/70 hover:text-accent2 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-accent2 focus:ring-offset-2 focus:ring-offset-darkest rounded-sm"
                 aria-label="LinkedIn profile"
               >
                 <Linkedin size={20} />
               </a>
             </div>
           </nav>
+          {/* Mobile social icons row */}
+          <div className="sm:hidden flex justify-start gap-4 px-4 pb-2">
+            <a
+              href="https://github.com/Aprattcodes"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-lightest/70 hover:text-accent2 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-accent2 focus:ring-offset-2 focus:ring-offset-darkest rounded-sm"
+              aria-label="GitHub profile"
+            >
+              <Github size={20} />
+            </a>
+            <a
+              href="https://linkedin.com/in/alyssakpratt"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-lightest/70 hover:text-accent2 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-accent2 focus:ring-offset-2 focus:ring-offset-darkest rounded-sm"
+              aria-label="LinkedIn profile"
+            >
+              <Linkedin size={20} />
+            </a>
+          </div>
         </header>
         {children}
         <footer className="mx-auto max-w-6xl px-6 py-10 text-sm text-lightest/60">
