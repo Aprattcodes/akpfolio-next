@@ -505,7 +505,7 @@ export const projects: Project[] = [
                   image: "/img/VAST/psuedo-plexus-clouds.png",
                   imageAlt: "Creative Technology - TouchDesigner generative visuals",
                   ctaLink: "/work/touchdesigner",
-                  ctaText: "View Portfolio",
+                  ctaText: "View Creative Work",
                   accentColor: "accent",
                 },
                 {
