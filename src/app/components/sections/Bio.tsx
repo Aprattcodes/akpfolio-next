@@ -34,7 +34,7 @@ export default function Bio() {
               id="bio-heading"
               className="text-3xl sm:text-4xl lg:text-5xl font-heading uppercase tracking-tight text-lightest"
             >
-              About Me (Alyssa Pratt)
+              About Me
             </h2>
 
             <div className="space-y-4">

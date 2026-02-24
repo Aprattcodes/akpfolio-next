@@ -19,6 +19,14 @@ export default function Hero() {
 
         {/* Content */}
         <div className="relative z-10 px-8 py-12 sm:px-12 sm:py-16">
+          <motion.p
+            className="text-sm font-caption uppercase tracking-widest text-accent2 mb-3"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.1, duration: 0.6 }}
+          >
+            Alyssa Pratt
+          </motion.p>
           <motion.h1
             className="text-3xl sm:text-5xl lg:text-6xl font-heading uppercase tracking-tight text-lightest"
             initial={{ opacity: 0, y: 16 }}

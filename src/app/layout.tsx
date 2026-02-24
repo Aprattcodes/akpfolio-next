@@ -3,6 +3,7 @@ import type { ReactNode } from "react";
 import type { Metadata } from "next";
 import { Montserrat, Titillium_Web, PT_Sans_Caption } from "next/font/google";
 import Link from "next/link";
+import { Github, Linkedin } from "lucide-react";
 
 const montserrat = Montserrat({ subsets: ["latin"], variable: "--font-body" });
 const titillium = Titillium_Web({ subsets: ["latin"], weight: ["700","900"], variable: "--font-heading" });
@@ -34,9 +35,9 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <header className="sticky top-0 z-50 backdrop-blur-md bg-darkest/40 border-b border-lightest/10">
           <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4 text-lightest">
             <Link href="/" className="font-heading text-xl">
-              AKP
+              Alyssa Pratt<span className="text-accent2">.</span>
             </Link>
-            <div className="flex gap-6 text-sm">
+            <div className="flex items-center gap-6 text-sm">
               <Link href="#projects" className="hover:opacity-80">
                 Work
               </Link>
@@ -46,6 +47,25 @@ export default function RootLayout({ children }: { children: ReactNode }) {
               <Link href="#contact" className="hover:opacity-80">
                 Contact
               </Link>
+              <span className="h-4 w-px bg-lightest/20" aria-hidden="true" />
+              <a
+                href="https://github.com/Aprattcodes"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-lightest/70 hover:text-accent2 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-accent2 focus:ring-offset-2 focus:ring-offset-darkest rounded-sm"
+                aria-label="GitHub profile"
+              >
+                <Github size={20} />
+              </a>
+              <a
+                href="https://linkedin.com/in/alyssakpratt"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-lightest/70 hover:text-accent2 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-accent2 focus:ring-offset-2 focus:ring-offset-darkest rounded-sm"
+                aria-label="LinkedIn profile"
+              >
+                <Linkedin size={20} />
+              </a>
             </div>
           </nav>
         </header>
