@@ -1,9 +1,19 @@
 "use client";
 
+import { useState } from "react";
 import { motion } from "framer-motion";
-import { Mail, Github, Linkedin, ExternalLink } from "lucide-react";
+import { Copy, Check, Github, Linkedin, ExternalLink } from "lucide-react";
 
 export default function ContactSection() {
+  const [copied, setCopied] = useState(false);
+  const email = "alyssakpratt@gmail.com";
+
+  const copyEmail = async () => {
+    await navigator.clipboard.writeText(email);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
+
   return (
     <section
       id="contact"
@@ -41,17 +51,17 @@ export default function ContactSection() {
             transition={{ duration: 0.6, delay: 0.3 }}
             className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-8"
           >
-            <a
-              href="mailto:alyssakpratt@gmail.com"
-              className="inline-flex items-center gap-2 rounded-md bg-accent2 px-6 py-3 font-semibold text-darkest hover:brightness-110 transition-all duration-200 w-full sm:w-auto justify-center"
-              aria-label="Send email"
+            <button
+              onClick={copyEmail}
+              className="inline-flex items-center gap-2 rounded-md bg-accent2 px-6 py-3 font-semibold text-darkest hover:brightness-110 transition-colors duration-200 w-full sm:w-auto justify-center cursor-pointer"
+              aria-label={copied ? "Email copied" : "Copy email to clipboard"}
             >
-              <Mail size={20} />
-              Get In Touch
-            </a>
+              {copied ? <Check size={20} /> : <Copy size={20} />}
+              {copied ? "Copied!" : email}
+            </button>
 
             <a
-              href="/resume.pdf"
+              href="/docs/Alyssa_Pratt_Resume_Portfolio_Download.pdf"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 rounded-md border-2 border-alert px-6 py-3 font-semibold text-lightest hover:bg-alert/10 transition-colors duration-200 w-full sm:w-auto justify-center"

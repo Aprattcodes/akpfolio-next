@@ -33,7 +33,7 @@ export default function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            Frontend Engineer &<br/> Creative Technologist
+            Frontend Engineer &<br/> Accessibility Specialist
           </motion.h1>
 
           <motion.p
@@ -65,12 +65,14 @@ export default function Hero() {
             >
               About
             </a>
-            <Link
-              href="/resume"
+            <a
+              href="/docs/Alyssa_Pratt_Resume_Portfolio_Download.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center rounded-md bg-alert px-6 py-3 font-semibold text-darkest hover:brightness-105"
             >
               Download Resume
-            </Link>
+            </a>
           </motion.div>
         </div>
       </div>

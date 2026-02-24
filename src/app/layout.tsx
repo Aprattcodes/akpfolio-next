@@ -69,7 +69,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
             </div>
           </nav>
           {/* Mobile social icons row */}
-          <div className="sm:hidden flex justify-start gap-4 px-4 pb-2">
+          <div className="sm:hidden flex justify-center gap-6 px-4 pb-3 border-t border-lightest/5">
             <a
               href="https://github.com/Aprattcodes"
               target="_blank"
